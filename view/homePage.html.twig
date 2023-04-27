@@ -1,0 +1,40 @@
+{% extends "template.html.twig" %}
+
+{% block title %}Accueil
+{% endblock %}
+
+
+{% block content %}
+	<section id="random">
+		<div class="row-limit-size">
+
+			<h2 class='titleSection'>Selection du jour</h2>
+			<article class='articleHomePage'>
+				<img src="./asset/img/{{random.thumbnail}}" alt="{{random.title}}">
+				<h3>{{random.title}}</h3>
+
+				<p>{{random.description}}</p>
+
+
+			</article>
+
+		</div>
+	</section>
+	<section id="breakfastRecipe">
+		<div class="row-limite-size">
+			<h2 class='titleSection'>Petit déjeuner</h2>
+			<div>
+				{% for breakfast in breakfasts %}
+					<article class='articleHomePage'>
+						<a href="#"><img src="./asset/img/{{breakfast.thumbnail}}" alt="{{breakfast.title}}"></a>
+						<h3>{{breakfast.title}}</h3>
+						<p>{{breakfast.description}}</p>
+
+					</article>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}

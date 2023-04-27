@@ -1,23 +1,575 @@
-*, ::after, ::before {
+*,
+::after,
+::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    list-style-type: none;
 }
-$green: #00CE67;
+
+$green: #48b065;
 $black: #333;
 
 
 .row-limite-size {
     width: 100%;
     max-width: 1300px;
+
+}
+.titleSection {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: $green;
+    margin-bottom: 50px;
+}
+.articleHomePage {
+    width: 230px;
+    overflow: auto;
+
+    img {
+        height: 210px;
+        width: 100%;
+    }
+
+    p {
+        color: $black;
+        font-size: 1rem;
+        text-align: justify;
+    }
 }
 
+header {
+    article:first-child {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        height: 100px;
+        justify-content: space-evenly;
+        height: 120px;
+
+
+        img {
+            width: 60px;
+            margin-top: 20px;
+
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            line-height: 120px;
+            color: $green;
+
+            span {
+                color: $black;
+            }
+        }
+    }
+
+    #desktopMenu {
+        display: none;
+        padding-bottom: 50px;
+    }
+
+    #phoneMenu {
+        display: flex;
+        justify-content: space-evenly;
+        height: 50px;
+        position: fixed;
+        bottom: 0;
+        background-color: #fff;
+        width: 100%;
+        height: 80px;
+        align-items: center;
+        position: fixed;
+        bottom: 0px;
+        left: 0;
+
+        a img {
+            width: 50px;
+            height: 50px;
+
+        }
+
+        #mainMenuPhone {
+            display: none;
+        }
+
+        #mainMenuPhone.active {
+            display: block;
+
+            #mainTab {
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                text-align: center;
+
+                &>li {
+                    width: 100%;
+                    background-color: #fff;
+                    color: $green;
+                    height: 50px;
+                    line-height: 50px;
+
+                    position: relative;
+
+                    &:hover {
+                        color: #fff;
+                        background-color: $green;
+                    }
+
+                    &:not(:last-child)::after {
+                        content: url(../img/iconchevronPhone.png);
+                        position: absolute;
+                        right: 50px;
+                        top: 0;
+                    }
+
+                    a {
+                        color: $green;
+
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+
+                    .secondTab {
+                        display: none;
+                    }
+
+                }
+
+                #breakfast #secondTabBreakfast.active3,
+                #starter #secondTabStarter.active4,
+                #dish #secondTabDish.active5,
+                #desert #secondTabDesert.active6 {
+                    display: block;
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    height: 200px;
+                    position: fixed;
+                    z-index: 500;
+                    background-color: #fff;
+
+                    &>li {
+                        width: 100%;
+                        display: block;
+                        background-color: #fff;
+
+                        &:hover {
+                            background-color: $green;
+                        }
+
+                        a {
+                            padding: 30px;
+                            color: $black;
+                            height: 50px;
+                            line-height: 50px;
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        #searchBarPhone {
+            display: none;
+        }
+
+        #searchBarPhone.active10 {
+            display: block;
+            position: fixed;
+            bottom: 80px;
+            width: 100%;
+
+            form {
+                width: 100%;
+                display: flex;
+
+                input,
+                button {
+                    height: 50px;
+                    border: 1px solid $green;
+                }
+
+                input {
+                    width: 70%;
+                }
+
+                button {
+                    width: 30%;
+                    color: #fff;
+                    background-color: $green;
+                }
+
+            }
+        }
+
+        #containerConnectPhone,
+        #containerRegisterPhone {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            z-index: 900;
+            overflow: auto;
+            width: 100%;
+
+            form {
+                width: 100%;
+                background-color: #fff;
+                position: relative;
+
+                h2 {
+                    text-align: center;
+                    color: $green;
+                    padding: 20px;
+                }
+
+                label,
+                p {
+                    margin-left: 5%;
+                    color: $black;
+                    font-weight: 700;
+                }
+
+                input {
+                    width: 90%;
+                    margin: 10px auto 20px auto;
+                    display: block;
+                    height: 50px;
+                }
+
+                p:last-child {
+                    padding: 20px 0;
+                }
+
+                #closeConectPhone,
+                #closeRegisterPhone {
+                    color: $black;
+                    font-weight: 900;
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        #containerConnectPhone.active11,
+        #containerRegisterPhone.active12 {
+            display: block;
+
+        }
+
+    }
+
+    article:last-child {
+        background-image: url(../img/vue-dessus-recadre-mains-cuisinier-aine-decoupage-carotte-cuisson-ragout-legumes.jpg);
+        background-size: cover;
+        height: 300px;
+        width: 100%;
+
+        h2 {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 150px;
+
+        }
+    }
+}
+
+/*table header*/
+@media screen and (min-width:600px) {
+    header {
+        article:first-child {
+            justify-content: center;
+
+            a {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+/*desktop header*/
+
+@media screen and (min-width: 800px) {
+    header {
+        #desktopMenu {
+            display: block;
+            display: flex;
+            justify-content: space-around;
+
+            nav {
+
+
+                &>ul {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-top: 20px;
+                    height: 20px;
+
+                    &>li {
+                        margin: 0 10px;
+                        color: $green;
+                        position: relative;
+                        width: 95px;
+                        font-weight: 700;
+
+                        &:hover .secondTab {
+                            display: block;
+                            background-color: #fff;
+
+                            li:hover {
+                                background-color: $green;
+
+                                a {
+                                    color: #fff;
+                                }
+                            }
+                        }
+
+                        &:not(:last-child)::after {
+                            content: url(../img/iconchevronPhone.png);
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                        }
+
+                        a {
+                            color: $green;
+                        }
+
+                        .secondTab {
+                            display: none;
+
+                        }
+                    }
+
+                    &>li:first-child,
+                    li:last-child {
+                        width: 150px;
+                    }
+
+                }
+
+            }
+
+            #icon {
+
+                width: 200px;
+
+                #iconConnect {
+                    margin: 0 18px;
+                }
+
+                #searchButton img,
+                #iconConnect img {
+                    width: 40px;
+                }
+
+                #searchBar {
+                    display: none;
+                }
+
+                #searchBar.active7 {
+                    display: block;
+                    position: fixed;
+                    top: 80px;
+                    left: 0;
+                    width: 100%;
+
+                    form {
+                        width: 80%;
+                        display: flex;
+                        margin: 0 auto;
+
+                        input,
+                        button {
+                            height: 30px;
+                            border: 1px solid $green;
+                        }
+
+                        input {
+                            width: 70%;
+                        }
+
+                        button {
+                            width: 30%;
+                            color: #fff;
+                            background-color: $green;
+                        }
+
+                    }
+                }
+
+                #containerConnect,
+                #containerRegister {
+                    display: none;
+                    position: fixed;
+                    top: 80px;
+                    left: 0;
+                    z-index: 900;
+                    overflow: auto;
+                    width: 100%;
+
+                    form {
+                        width: 100%;
+                        background-color: #fff;
+                        position: relative;
+
+                        h2 {
+                            text-align: center;
+                            color: $green;
+                            padding: 20px;
+                        }
+
+                        label,
+                        p {
+                            margin-left: 5%;
+                            color: $black;
+                            font-weight: 700;
+                        }
+
+                        input {
+                            width: 90%;
+                            margin: 10px auto 20px auto;
+                            display: block;
+                            height: 50px;
+                        }
+
+                        p:last-child {
+                            padding: 20px 0;
+                        }
+
+                        #closeConect,
+                        #closeRegister {
+                            color: $black;
+                            font-weight: 900;
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+
+                #containerConnect.active8,
+                #containerRegister.active9 {
+                    display: block;
+
+                }
+
+            }
+
+        }
+
+        #phoneMenu {
+            display: none;
+        }
+
+        article:last-child {
+
+            height: 500px;
+
+
+            h2 {
+                font-size: 1.5rem;
+                padding-top: 200px;
+
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    header {
+        article:first-child {
+
+            height: 100px;
+
+            height: 120px;
+
+
+            img {
+                width: 60px;
+                margin-top: 20px;
+
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 120px;
+                color: $green;
+
+                span {
+                    color: $black;
+                }
+            }
+        }
+
+        article:last-child {
+
+            height: 800px;
+
+
+            h2 {
+                font-size: 2rem;
+                padding-top: 300px;
+
+            }
+        }
+    }
+}
+
+/*homepage*/
+
+/*phone random*/
+main {
+    #random {
+        padding: 50px 0;
+
+        .row-limit-size {
+           
+
+            article {
+                margin: 0 auto;
+            }
+        }
+    }
+    #breakfastRecipe {
+        .row-limit-size{
+            &>div {
+              
+                &>.articleHomePage {
+                    margin: 0 auto;
+                }
+
+            }
+        }
+    }
+}
+
+
+
+
+
+/*footer phone*/
 footer {
+    padding-bottom: 50px;
     background-color: $green;
+
     img {
         width: 25px;
     }
+
     #conteiner_footer {
         display: flex;
         justify-content: space-evenly;
@@ -25,13 +577,19 @@ footer {
         height: 150px;
         color: #fff;
         font-weight: bold;
-        div:first-child{
+
+        div:first-child {
+            img {
+                width: 15px;
+            }
+
             font-size: 1.2rem;
-            span{
-                display:inline-block ;
+
+            span {
+                display: inline-block;
                 line-height: 150px;
             }
-            
+
         }
     }
 }

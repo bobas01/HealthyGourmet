@@ -11,6 +11,8 @@ class Recipe {
     Private $duration = 20;
     Private $cooking_time = 20;
     Private $number_of_person = 1;
+    Private $description = "blbblza";
+    
   
    
     
@@ -58,6 +60,9 @@ class Recipe {
     public function getNumber_of_person(){
         return $this->number_of_person;
      }
+    public function getDescription(){
+        return $this->description;
+     }
 
      
      public function setId(int $id){
@@ -91,6 +96,9 @@ class Recipe {
     }
     public function setNumber_of_person(int $number_of_person){
         return $this->number_of_person=$number_of_person;
+    }
+    public function setDescription(string $description){
+        return $this->description=$description;
     }
     
     

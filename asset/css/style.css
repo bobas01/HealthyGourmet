@@ -1,8 +1,12 @@
-*, ::after, ::before {
+*,
+::after,
+::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .row-limite-size {
@@ -10,8 +14,442 @@
   max-width: 1300px;
 }
 
+.titleSection {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #48b065;
+  margin-bottom: 50px;
+}
+
+.articleHomePage {
+  width: 230px;
+  overflow: auto;
+}
+.articleHomePage img {
+  height: 210px;
+  width: 100%;
+}
+.articleHomePage p {
+  color: #333;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+header article:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  height: 100px;
+  justify-content: space-evenly;
+  height: 120px;
+}
+header article:first-child img {
+  width: 60px;
+  margin-top: 20px;
+}
+header article:first-child h1 {
+  font-size: 1.5rem;
+  line-height: 120px;
+  color: #48b065;
+}
+header article:first-child h1 span {
+  color: #333;
+}
+header #desktopMenu {
+  display: none;
+  padding-bottom: 50px;
+}
+header #phoneMenu {
+  display: flex;
+  justify-content: space-evenly;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+}
+header #phoneMenu a img {
+  width: 50px;
+  height: 50px;
+}
+header #phoneMenu #mainMenuPhone {
+  display: none;
+}
+header #phoneMenu #mainMenuPhone.active {
+  display: block;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab > li {
+  width: 100%;
+  background-color: #fff;
+  color: #48b065;
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab > li:hover {
+  color: #fff;
+  background-color: #48b065;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab > li:not(:last-child)::after {
+  content: url(../img/iconchevronPhone.png);
+  position: absolute;
+  right: 50px;
+  top: 0;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab > li a {
+  color: #48b065;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab > li a:hover {
+  color: #fff;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab > li .secondTab {
+  display: none;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab #breakfast #secondTabBreakfast.active3,
+header #phoneMenu #mainMenuPhone.active #mainTab #starter #secondTabStarter.active4,
+header #phoneMenu #mainMenuPhone.active #mainTab #dish #secondTabDish.active5,
+header #phoneMenu #mainMenuPhone.active #mainTab #desert #secondTabDesert.active6 {
+  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 200px;
+  position: fixed;
+  z-index: 500;
+  background-color: #fff;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab #breakfast #secondTabBreakfast.active3 > li,
+header #phoneMenu #mainMenuPhone.active #mainTab #starter #secondTabStarter.active4 > li,
+header #phoneMenu #mainMenuPhone.active #mainTab #dish #secondTabDish.active5 > li,
+header #phoneMenu #mainMenuPhone.active #mainTab #desert #secondTabDesert.active6 > li {
+  width: 100%;
+  display: block;
+  background-color: #fff;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab #breakfast #secondTabBreakfast.active3 > li:hover,
+header #phoneMenu #mainMenuPhone.active #mainTab #starter #secondTabStarter.active4 > li:hover,
+header #phoneMenu #mainMenuPhone.active #mainTab #dish #secondTabDish.active5 > li:hover,
+header #phoneMenu #mainMenuPhone.active #mainTab #desert #secondTabDesert.active6 > li:hover {
+  background-color: #48b065;
+}
+header #phoneMenu #mainMenuPhone.active #mainTab #breakfast #secondTabBreakfast.active3 > li a,
+header #phoneMenu #mainMenuPhone.active #mainTab #starter #secondTabStarter.active4 > li a,
+header #phoneMenu #mainMenuPhone.active #mainTab #dish #secondTabDish.active5 > li a,
+header #phoneMenu #mainMenuPhone.active #mainTab #desert #secondTabDesert.active6 > li a {
+  padding: 30px;
+  color: #333;
+  height: 50px;
+  line-height: 50px;
+}
+header #phoneMenu #searchBarPhone {
+  display: none;
+}
+header #phoneMenu #searchBarPhone.active10 {
+  display: block;
+  position: fixed;
+  bottom: 80px;
+  width: 100%;
+}
+header #phoneMenu #searchBarPhone.active10 form {
+  width: 100%;
+  display: flex;
+}
+header #phoneMenu #searchBarPhone.active10 form input,
+header #phoneMenu #searchBarPhone.active10 form button {
+  height: 50px;
+  border: 1px solid #48b065;
+}
+header #phoneMenu #searchBarPhone.active10 form input {
+  width: 70%;
+}
+header #phoneMenu #searchBarPhone.active10 form button {
+  width: 30%;
+  color: #fff;
+  background-color: #48b065;
+}
+header #phoneMenu #containerConnectPhone,
+header #phoneMenu #containerRegisterPhone {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  z-index: 900;
+  overflow: auto;
+  width: 100%;
+}
+header #phoneMenu #containerConnectPhone form,
+header #phoneMenu #containerRegisterPhone form {
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+}
+header #phoneMenu #containerConnectPhone form h2,
+header #phoneMenu #containerRegisterPhone form h2 {
+  text-align: center;
+  color: #48b065;
+  padding: 20px;
+}
+header #phoneMenu #containerConnectPhone form label,
+header #phoneMenu #containerConnectPhone form p,
+header #phoneMenu #containerRegisterPhone form label,
+header #phoneMenu #containerRegisterPhone form p {
+  margin-left: 5%;
+  color: #333;
+  font-weight: 700;
+}
+header #phoneMenu #containerConnectPhone form input,
+header #phoneMenu #containerRegisterPhone form input {
+  width: 90%;
+  margin: 10px auto 20px auto;
+  display: block;
+  height: 50px;
+}
+header #phoneMenu #containerConnectPhone form p:last-child,
+header #phoneMenu #containerRegisterPhone form p:last-child {
+  padding: 20px 0;
+}
+header #phoneMenu #containerConnectPhone form #closeConectPhone,
+header #phoneMenu #containerConnectPhone form #closeRegisterPhone,
+header #phoneMenu #containerRegisterPhone form #closeConectPhone,
+header #phoneMenu #containerRegisterPhone form #closeRegisterPhone {
+  color: #333;
+  font-weight: 900;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+}
+header #phoneMenu #containerConnectPhone.active11,
+header #phoneMenu #containerRegisterPhone.active12 {
+  display: block;
+}
+header article:last-child {
+  background-image: url(../img/vue-dessus-recadre-mains-cuisinier-aine-decoupage-carotte-cuisson-ragout-legumes.jpg);
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+}
+header article:last-child h2 {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 150px;
+}
+
+/*table header*/
+@media screen and (min-width: 600px) {
+  header article:first-child {
+    justify-content: center;
+  }
+  header article:first-child a {
+    margin: 0 10px;
+  }
+}
+/*desktop header*/
+@media screen and (min-width: 800px) {
+  header #desktopMenu {
+    display: block;
+    display: flex;
+    justify-content: space-around;
+  }
+  header #desktopMenu nav > ul {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    height: 20px;
+  }
+  header #desktopMenu nav > ul > li {
+    margin: 0 10px;
+    color: #48b065;
+    position: relative;
+    width: 95px;
+    font-weight: 700;
+  }
+  header #desktopMenu nav > ul > li:hover .secondTab {
+    display: block;
+    background-color: #fff;
+  }
+  header #desktopMenu nav > ul > li:hover .secondTab li:hover {
+    background-color: #48b065;
+  }
+  header #desktopMenu nav > ul > li:hover .secondTab li:hover a {
+    color: #fff;
+  }
+  header #desktopMenu nav > ul > li:not(:last-child)::after {
+    content: url(../img/iconchevronPhone.png);
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  header #desktopMenu nav > ul > li a {
+    color: #48b065;
+  }
+  header #desktopMenu nav > ul > li .secondTab {
+    display: none;
+  }
+  header #desktopMenu nav > ul > li:first-child,
+  header #desktopMenu nav > ul li:last-child {
+    width: 150px;
+  }
+  header #desktopMenu #icon {
+    width: 200px;
+  }
+  header #desktopMenu #icon #iconConnect {
+    margin: 0 18px;
+  }
+  header #desktopMenu #icon #searchButton img,
+  header #desktopMenu #icon #iconConnect img {
+    width: 40px;
+  }
+  header #desktopMenu #icon #searchBar {
+    display: none;
+  }
+  header #desktopMenu #icon #searchBar.active7 {
+    display: block;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+  }
+  header #desktopMenu #icon #searchBar.active7 form {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+  }
+  header #desktopMenu #icon #searchBar.active7 form input,
+  header #desktopMenu #icon #searchBar.active7 form button {
+    height: 30px;
+    border: 1px solid #48b065;
+  }
+  header #desktopMenu #icon #searchBar.active7 form input {
+    width: 70%;
+  }
+  header #desktopMenu #icon #searchBar.active7 form button {
+    width: 30%;
+    color: #fff;
+    background-color: #48b065;
+  }
+  header #desktopMenu #icon #containerConnect,
+  header #desktopMenu #icon #containerRegister {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    z-index: 900;
+    overflow: auto;
+    width: 100%;
+  }
+  header #desktopMenu #icon #containerConnect form,
+  header #desktopMenu #icon #containerRegister form {
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+  }
+  header #desktopMenu #icon #containerConnect form h2,
+  header #desktopMenu #icon #containerRegister form h2 {
+    text-align: center;
+    color: #48b065;
+    padding: 20px;
+  }
+  header #desktopMenu #icon #containerConnect form label,
+  header #desktopMenu #icon #containerConnect form p,
+  header #desktopMenu #icon #containerRegister form label,
+  header #desktopMenu #icon #containerRegister form p {
+    margin-left: 5%;
+    color: #333;
+    font-weight: 700;
+  }
+  header #desktopMenu #icon #containerConnect form input,
+  header #desktopMenu #icon #containerRegister form input {
+    width: 90%;
+    margin: 10px auto 20px auto;
+    display: block;
+    height: 50px;
+  }
+  header #desktopMenu #icon #containerConnect form p:last-child,
+  header #desktopMenu #icon #containerRegister form p:last-child {
+    padding: 20px 0;
+  }
+  header #desktopMenu #icon #containerConnect form #closeConect,
+  header #desktopMenu #icon #containerConnect form #closeRegister,
+  header #desktopMenu #icon #containerRegister form #closeConect,
+  header #desktopMenu #icon #containerRegister form #closeRegister {
+    color: #333;
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+  }
+  header #desktopMenu #icon #containerConnect.active8,
+  header #desktopMenu #icon #containerRegister.active9 {
+    display: block;
+  }
+  header #phoneMenu {
+    display: none;
+  }
+  header article:last-child {
+    height: 500px;
+  }
+  header article:last-child h2 {
+    font-size: 1.5rem;
+    padding-top: 200px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header article:first-child {
+    height: 100px;
+    height: 120px;
+  }
+  header article:first-child img {
+    width: 60px;
+    margin-top: 20px;
+  }
+  header article:first-child h1 {
+    font-size: 2rem;
+    line-height: 120px;
+    color: #48b065;
+  }
+  header article:first-child h1 span {
+    color: #333;
+  }
+  header article:last-child {
+    height: 800px;
+  }
+  header article:last-child h2 {
+    font-size: 2rem;
+    padding-top: 300px;
+  }
+}
+/*homepage*/
+/*phone random*/
+main #random {
+  padding: 50px 0;
+}
+main #random .row-limit-size article {
+  margin: 0 auto;
+}
+main #breakfastRecipe .row-limit-size > div > .articleHomePage {
+  margin: 0 auto;
+}
+
+/*footer phone*/
 footer {
-  background-color: #00CE67;
+  padding-bottom: 50px;
+  background-color: #48b065;
 }
 footer img {
   width: 25px;
@@ -26,6 +464,9 @@ footer #conteiner_footer {
 }
 footer #conteiner_footer div:first-child {
   font-size: 1.2rem;
+}
+footer #conteiner_footer div:first-child img {
+  width: 15px;
 }
 footer #conteiner_footer div:first-child span {
   display: inline-block;
