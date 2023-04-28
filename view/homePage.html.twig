@@ -23,12 +23,27 @@
 	<section id="breakfastRecipe">
 		<div class="row-limite-size">
 			<h2 class='titleSection'>Petit déjeuner</h2>
-			<div>
+			<div class= 'containerFourRecipe'>
 				{% for breakfast in breakfasts %}
 					<article class='articleHomePage'>
 						<a href="#"><img src="./asset/img/{{breakfast.thumbnail}}" alt="{{breakfast.title}}"></a>
 						<h3>{{breakfast.title}}</h3>
 						<p>{{breakfast.description}}</p>
+
+					</article>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<section id="entreeRecipe">
+		<div class="row-limite-size">
+			<h2 class='titleSection'>Entrée</h2>
+			<div class= 'containerFourRecipe'>
+				{% for entree in entrees %}
+					<article class='articleHomePage'>
+						<a href="#"><img src="./asset/img/{{entree.thumbnail}}" alt="{{entree.title}}"></a>
+						<h3>{{entree.title}}</h3>
+						<p>{{entree.description}}</p>
 
 					</article>
 				{% endfor %}

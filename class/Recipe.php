@@ -12,6 +12,7 @@ class Recipe {
     Private $cooking_time = 20;
     Private $number_of_person = 1;
     Private $description = "blbblza";
+    Private $step = "step";
     
   
    
@@ -63,6 +64,9 @@ class Recipe {
     public function getDescription(){
         return $this->description;
      }
+    public function getStep(){
+        return $this->step;
+     }
 
      
      public function setId(int $id){
@@ -85,13 +89,13 @@ class Recipe {
     public function setPublished_at(string $published_at){
         return $this->published_at=$published_at;
     }
-    public function setDifficulty(int $difficulty){
+    public function setDifficulty(string $difficulty){
         return $this->difficulty=$difficulty;
     }
     public function setDuration(int $duration){
         return $this->duration=$duration;
     }    
-    public function setCooking_time(int $cooking_time){
+    public function setCooking_time(?int $cooking_time){
         return $this->cooking_time=$cooking_time;
     }
     public function setNumber_of_person(int $number_of_person){
@@ -99,6 +103,9 @@ class Recipe {
     }
     public function setDescription(string $description){
         return $this->description=$description;
+    }
+    public function setStep(string $step){
+        return $this->step=$step;
     }
     
     

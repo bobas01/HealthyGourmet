@@ -1,7 +1,7 @@
 <header>
 	<article>
-		<a href="#"><img src="./asset/img/logo_cuisine_v4.svg" alt="logo"></a>
-		<a href="#">
+		<a href="./home"><img src="./asset/img/logo_cuisine_v4.svg" alt="logo"></a>
+		<a href="./home">
 			<h1>Healthy<span>Gourmet</span>
 			</h1>
 		</a>
@@ -90,8 +90,8 @@
 		</a>
 
 		<div id="searchBar">
-			<form>
-				<input type="text" placeholder="Recherche...">
+			<form action="./search" method="GET">
+				<input type="text" name="s" placeholder="Recherche...">
 				<button type="submit">Rechercher</button>
 			</form>
 		</div>
@@ -217,7 +217,7 @@
 		</a>
 
 		<div id="searchBarPhone">
-			<form>
+			<form action="./search" method="GET">
 				<input type="text" placeholder="Recherche...">
 				<button type="submit">Rechercher</button>
 			</form>

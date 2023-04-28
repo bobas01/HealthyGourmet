@@ -1,22 +1,24 @@
 <?php
-class RecipeModel extends Model {
-    public function getRandomRecipe(){
-        $random=$this->getdb()->query('SELECT  `recipe`.`id`,`title`,`thumbnail`,`description` FROM `recipe`
+class RecipeModel extends Model
+{
+    public function getRandomRecipe()
+    {
+        $random = $this->getdb()->query('SELECT  `recipe`.`id`,`title`, `user_id`, `difficulty`, `thumbnail`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`  FROM `recipe`
         INNER JOIN `category_recipe`
         ON `category_recipe`.`recipe_id`=`recipe`.`id`
         INNER JOIN `category`
         ON `category_recipe`.`category_id`= `category`.`id`
          ORDER BY RAND(`recipe`.`id`)LIMIT 1;');
-         $test= $random->fetch(PDO::FETCH_ASSOC);
-         $random= new Recipe($test);
-        
-         return $test;
+        $test = $random->fetch(PDO::FETCH_ASSOC);
+        $random = new Recipe($test);
+
+        return $test;
     }
     public function getLastFourEntree()
     {
         $entrees = [];
 
-        $lastEntree = $this->getdb()->query('SELECT  `recipe`.`id`,`title`,`thumbnail`,`description` FROM `recipe`
+        $lastEntree = $this->getdb()->query('SELECT  `recipe`.`id`,`title`, `user_id`, `difficulty`, `thumbnail`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`  FROM `recipe`
         INNER JOIN `category_recipe`
         ON `category_recipe`.`recipe_id`=`recipe`.`id`
         INNER JOIN `category`
@@ -32,7 +34,7 @@ class RecipeModel extends Model {
     {
         $breakfasts = [];
 
-        $lastBreakfasts = $this->getdb()->query('SELECT `recipe`.`id`,`title`,`thumbnail`,`description` FROM `recipe`
+        $lastBreakfasts = $this->getdb()->query('SELECT `recipe`.`id`,`title`, `user_id`, `difficulty`, `thumbnail`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`  FROM `recipe`
         INNER JOIN `category_recipe`
         ON `category_recipe`.`recipe_id`=`recipe`.`id`
         INNER JOIN `category`
@@ -48,7 +50,7 @@ class RecipeModel extends Model {
     {
         $Maincourses = [];
 
-        $lastMaincourse = $this->getdb()->query('SELECT `recipe`.`id`,`title`,`thumbnail`,`description` FROM `recipe`
+        $lastMaincourse = $this->getdb()->query('SELECT `recipe`.`id`,`title`, `user_id`, `difficulty`, `thumbnail`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`  FROM `recipe`
         INNER JOIN `category_recipe`
         ON `category_recipe`.`recipe_id`=`recipe`.`id`
         INNER JOIN `category`
@@ -64,7 +66,7 @@ class RecipeModel extends Model {
     {
         $desserts = [];
 
-        $lastDessert = $this->getdb()->query('SELECT `recipe`.`id`,`title`,`thumbnail`,`description` FROM `recipe`
+        $lastDessert = $this->getdb()->query('SELECT `recipe`.`id`,`title`, `user_id`, `difficulty`, `thumbnail`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step` FROM `recipe`
         INNER JOIN `category_recipe`
         ON `category_recipe`.`recipe_id`=`recipe`.`id`
         INNER JOIN `category`
@@ -76,5 +78,46 @@ class RecipeModel extends Model {
         $lastDessert->closeCursor();
         return $desserts;
     }
+    public function getResultReasearch($s)
+    {
+        $resultReasearchs = [];
+        $research = null;
+        $id = 1;
 
+        if (isset($s)) {
+            $s = htmlspecialchars($s);
+
+            $research = $s;
+            $research = trim($research);
+            $research = strip_tags($research);
+        }
+        if (!empty($research)) {
+            $research = strtolower($research);
+            $search_term = '%' . $research . '%';
+            $select_research = $this->getdb()->prepare("SELECT DISTINCT `recipe`.`id`, `recipe`.`title`, `category`.`name`, `ingredient`.`name`, `recipe`.`thumbnail`, `recipe`.`description`  FROM `recipe`
+                INNER JOIN `category_recipe`
+                ON `category_recipe`.`recipe_id`=`recipe`.`id`
+                INNER JOIN `category`
+                ON `category_recipe`.`category_id`= `category`.`id`
+                INNER JOIN `ingredient_recipe`
+                ON `ingredient_recipe`.`recipe_id`=`recipe`.`id`
+                INNER JOIN `ingredient`
+                ON `ingredient`.`id`= `ingredient_recipe`.`ingredient_id`
+                
+                
+                
+                WHERE `recipe`.`title` LIKE :search_term OR `category`.`name` LIKE :search_term OR `ingredient`.`name` LIKE  :search_term 
+                ORDER BY id ;");
+            $select_research->bindValue(':search_term', $search_term, PDO::PARAM_STR);
+
+            $select_research->execute();
+            while ($resultReasearch = $select_research->fetch(PDO::FETCH_ASSOC)) {
+                $resultReasearchs[] = new Recipe($resultReasearch);
+            }
+            $select_research->closeCursor();
+            return $resultReasearchs;
+        } else {
+            $message = "Vous devez entrer votre requete dans la barre de recherche";
+        }
+    }
 }

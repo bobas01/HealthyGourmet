@@ -16,6 +16,7 @@ $black: #333;
 .row-limite-size {
     width: 100%;
     max-width: 1300px;
+    margin: 0 auto;
 
 }
 .titleSection {
@@ -23,7 +24,7 @@ $black: #333;
     font-weight: 700;
     font-size: 1.2rem;
     color: $green;
-    margin-bottom: 50px;
+    margin: 50px 0;
 }
 .articleHomePage {
     width: 230px;
@@ -530,7 +531,15 @@ header {
 }
 
 /*homepage*/
+.containerFourRecipe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .articleHomePage {
+        margin: 20px 0;
+    }
 
+  }
 /*phone random*/
 main {
     #random {
@@ -546,11 +555,9 @@ main {
     }
     #breakfastRecipe {
         .row-limit-size{
-            &>div {
-              
-                &>.articleHomePage {
-                    margin: 0 auto;
-                }
+            .containerFourRecipe {
+              display: flex;
+               
 
             }
         }

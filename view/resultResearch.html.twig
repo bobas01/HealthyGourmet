@@ -1,0 +1,23 @@
+{% extends "template.html.twig" %}
+
+{% block title %}Recherche
+{% endblock %}
+
+{% block content %}
+<section >
+		<div class="row-limite-size">
+			<h2 class='titleSection'>Résultat de recherche</h2>
+			<div class= 'containerFourRecipe'>
+				{% for resultReasearch in resultReasearchs %}
+					<article class='articleHomePage'>
+						<a href="#"><img src="./asset/img/{{resultReasearch.thumbnail}}" alt="{{resultReasearch.title}}"></a>
+						<h3>{{resultReasearch.title}}</h3>
+						<p>{{resultReasearch.description}}</p>
+
+					</article>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
