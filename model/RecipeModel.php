@@ -82,7 +82,7 @@ class RecipeModel extends Model
     {
         $resultReasearchs = [];
         $research = null;
-        $id = 1;
+       
 
         if (isset($s)) {
             $s = htmlspecialchars($s);
@@ -94,6 +94,7 @@ class RecipeModel extends Model
         if (!empty($research)) {
             $research = strtolower($research);
             $search_term = '%' . $research . '%';
+           
             $select_research = $this->getdb()->prepare("SELECT DISTINCT `recipe`.`id`, `recipe`.`title`, `category`.`name`, `ingredient`.`name`, `recipe`.`thumbnail`, `recipe`.`description`  FROM `recipe`
                 INNER JOIN `category_recipe`
                 ON `category_recipe`.`recipe_id`=`recipe`.`id`
@@ -107,17 +108,23 @@ class RecipeModel extends Model
                 
                 
                 WHERE `recipe`.`title` LIKE :search_term OR `category`.`name` LIKE :search_term OR `ingredient`.`name` LIKE  :search_term 
-                ORDER BY id ;");
+                GROUP BY id ;");
+              
             $select_research->bindValue(':search_term', $search_term, PDO::PARAM_STR);
 
-            $select_research->execute();
+            $select_research->execute(); 
+          
             while ($resultReasearch = $select_research->fetch(PDO::FETCH_ASSOC)) {
                 $resultReasearchs[] = new Recipe($resultReasearch);
+                
             }
+          
             $select_research->closeCursor();
             return $resultReasearchs;
+           
         } else {
             $message = "Vous devez entrer votre requete dans la barre de recherche";
+            echo $message;
         }
     }
 }

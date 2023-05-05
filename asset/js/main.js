@@ -54,7 +54,8 @@ searchButtonPhone.addEventListener('click', function(){
 })
 
 
-iconConnect.addEventListener('click', function(){
+iconConnect.addEventListener('click', function(e){
+  e.preventDefault()
   containerConnect.classList.toggle('active8');
   
 })

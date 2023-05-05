@@ -14,12 +14,13 @@
 	</head>
 
 	<body>
+			{%  include 'header.html.twig' %}
 		<main>
 
-			{%  include 'header.html.twig' %}
 			{% block content %}{% endblock %}
-			{% include 'footer.html.twig' %}
+			
 		</main>
+		{% include 'footer.html.twig' %}
 		<script src="./asset/js/main.js"></script>
 	</body>
 

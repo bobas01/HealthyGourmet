@@ -1,7 +1,7 @@
 <header>
 	<article>
-		<a href="./home"><img src="./asset/img/logo_cuisine_v4.svg" alt="logo"></a>
-		<a href="./home">
+		<a href="./"><img src="./asset/img/logo_cuisine_v4.svg" alt="logo"></a>
+		<a href="./">
 			<h1>Healthy<span>Gourmet</span>
 			</h1>
 		</a>
@@ -84,51 +84,62 @@
 				</li>
 			</ul>
 		</nav>
-        <div id="icon">
-		<a href="#" id="searchButton">
-			<img src="./asset/img/iconLoupe.png" alt="loupe">
-		</a>
+		<div id="icon">
+			<a href="#" id="searchButton">
+				<img src="./asset/img/iconLoupe.png" alt="loupe">
+			</a>
 
-		<div id="searchBar">
-			<form action="./search" method="GET">
-				<input type="text" name="s" placeholder="Recherche...">
-				<button type="submit">Rechercher</button>
-			</form>
-		</div>
+			<div id="searchBar">
+				<form action="./search" method="GET">
+					<input type="text" name="s" placeholder="Recherche...">
+					<button type="submit">Rechercher</button>
+				</form>
+			</div>
+			{% if app.session.get('connected') is defined and app.session.get('connected') == true %}
+				<a href="#" id="iconConnect"><img src="./asset/img/iconConnectOn.png" alt="conection"></a>
+			{% else %}
+				<a href="#" id="iconConnect"><img src="./asset/img/iconConnectOff.png" alt="conection"></a>
+			{% endif %}
 
-		<a href="#" id="iconConnect"><img src="./asset/img/iconConnectOff.png" alt="conection"></a>
-        <div id="containerConnect">
-			<form action="#" method="POST">
-				<h2>Se connecter</h2>
-				<label for="mail">Email</label>
-				<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" require>
-				<label for="password">Mot de passe</label>
-				<input type="text" name="password" id="password" require>
-				<p>Mot de passe oublié?
-					<a href="#">Clique ici!</a>
-				</p>
-				<p>Tu n'as pas de compte?
-					<a href="#" id="subscription">Inscription</a>
-				</p>
-				<a href="#" id="closeConect">X</a>
-			</form>
+			<div id="containerConnect">
+				{% if app.request.query.get('err') is defined %}
+					<p style="color:red;">Identifiant et/ou mot de passe incorrecte</p>
+				{% endif %}
+				<form action="./homeConnect" method="POST">
+					<h2>Se connecter</h2>
+					<label for="mail">Email</label>
+					<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" required>
+					<label for="password">Mot de passe</label>
+					<input type="password" name="password" id="password" required>
+					<input type="submit" value="Connexion">
+					<p>Mot de passe oublié?
+						<a href="#">Clique ici!</a>
+					</p>
+					<p>Tu n'as pas de compte?
+						<a href="#" id="subscription">Inscription</a>
+					</p>
+					<a href="#" id="closeConect">X</a>
+				</form>
+			</div>
+			<div id="containerRegister">
+				{% if app.request.query.get('erro') is defined %}
+					<p style="color:red;">Identifiant et/ou mot de passe incorrecte</p>
+				{% endif %}
+				<form action="./homeConnect" method="post">
+					<h2>Inscription</h2>
+					<label for="username">Pseudo</label>
+					<input type="text" name="username" id="username" require>
+					<label for="mail">Email</label>
+					<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" require>
+					<label for="password">Mot de passe</label>
+					<input type="text" name="password" id="password" require>
+					<p>Tu as déjà un compte?
+						<a href="#" id="connection">Connexion</a>
+					</p>
+					<a href="#" id="closeRegister">X</a>
+				</form>
+			</div>
 		</div>
-		<div id="containerRegister">
-			<form action="#" method="post">
-				<h2>Inscription</h2>
-				<label for="username">Pseudo</label>
-				<input type="text" name="username" id="username" require>
-				<label for="mail">Email</label>
-				<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" require>
-				<label for="password">Mot de passe</label>
-				<input type="text" name="password" id="password" require>
-				<p>Tu as déjà un compte?
-					<a href="#" id="connection">Connection</a>
-				</p>
-				<a href="#" id="closeRegister">X</a>
-			</form>
-		</div>
-        </div>
 	</div>
 
 
@@ -222,8 +233,12 @@
 				<button type="submit">Rechercher</button>
 			</form>
 		</div>
-		<a href="#" id="iconConnectPhone"><img src="./asset/img/iconConnectOff.png" alt="conection"></a>
 
+		{% if session.connected is defined and session.connected == true %}
+			<a href="#" id="iconConnectPhone"><img src="./asset/img/iconConnectOn.png" alt="conection"></a>
+		{% else %}
+			<a href="#" id="iconConnectPhone"><img src="./asset/img/iconConnectOff.png" alt="conection"></a>
+		{% endif %}
 		<div id="containerConnectPhone">
 			<form action="#" method="POST">
 				<h2>Se connecter</h2>

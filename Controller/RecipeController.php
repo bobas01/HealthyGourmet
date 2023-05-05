@@ -27,13 +27,13 @@ class RecipeController extends Controller
     {
         global $router;
         $manager = new RecipeModel();
-        $datesResultResearch = $manager->getResultReasearch($_GET['s']);
+        $datasResultResearch = $manager->getResultReasearch($_GET['s']);
 
- 
+       
 
         $twig = $this->loaderTwig();
         $action = $router->generate('resultResearch');
 
-        echo $twig->render('resultResearch.html.twig', ['ResultResearch' => $datesResultResearch, 'action' => $action]);
+        echo $twig->render('resultResearch.html.twig', ['resultResearchs' => $datasResultResearch, 'action' => $action]);
     }
 }

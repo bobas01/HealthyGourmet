@@ -6,7 +6,12 @@ require_once './vendor/altorouter/altorouter/AltoRouter.php';
 $router = new AltoRouter();
 $router->setBasePath('/php/HealthyGourmet');
 
-$router->map('GET', '/home', 'RecipeController#homePage', 'home' );
+$router->map('GET', '/', 'RecipeController#homePage', 'home' );
+$router->map('POST', '/homeConnect', 'UserController#connexion', 'homeConnect' );
+// $router->map('POST', '/homeConnect', 'UserController#connexion', 'homeConnectPOST' );
+
+
+
 
 $router->map('GET', '/search', 'RecipeController#resultResearch', 'resultResearch' );
 
