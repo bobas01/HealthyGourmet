@@ -32,9 +32,6 @@ class UserModel extends Model
 
         if (!empty($_POST)) {
 
-
-
-            
                 $register = $this->getdb()->prepare("INSERT INTO `user` ( `username`, `password`, `mail`) VALUES ( :username, :pass, :mail)");
 
 

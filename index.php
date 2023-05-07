@@ -8,13 +8,9 @@ $router->setBasePath('/php/HealthyGourmet');
 
 $router->map('GET', '/', 'RecipeController#homePage', 'home' );
 $router->map('POST', '/homeConnect', 'UserController#connexion', 'homeConnect' );
-// $router->map('POST', '/homeConnect', 'UserController#connexion', 'homeConnectPOST' );
-
-
-
-
 $router->map('GET', '/search', 'RecipeController#resultResearch', 'resultResearch' );
-
+$router->map('GET', '/disconnect', 'UserController#disconnect', 'disconnect' );
+$router->map('POST', '/register', 'UserController#register', 'register' );
 
 $match = $router->match();
 

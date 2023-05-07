@@ -95,14 +95,14 @@
 					<button type="submit">Rechercher</button>
 				</form>
 			</div>
-			{% if app.session.get('connected') is defined and app.session.get('connected') == true %}
-				<a href="#" id="iconConnect"><img src="./asset/img/iconConnectOn.png" alt="conection"></a>
+			{% if session.connected is defined and session.connected == true %}
+				<a href="./disconnect" id="iconConnectOn" ><img src="./asset/img/iconConnectOn.png" alt="conection" ></a>
 			{% else %}
 				<a href="#" id="iconConnect"><img src="./asset/img/iconConnectOff.png" alt="conection"></a>
 			{% endif %}
 
 			<div id="containerConnect">
-				{% if app.request.query.get('err') is defined %}
+				{% if get.err is defined %}
 					<p style="color:red;">Identifiant et/ou mot de passe incorrecte</p>
 				{% endif %}
 				<form action="./homeConnect" method="POST">
@@ -122,17 +122,19 @@
 				</form>
 			</div>
 			<div id="containerRegister">
-				{% if app.request.query.get('erro') is defined %}
+				
+				<form action="./homeConnect" method="post">
+				{% if get.erro is defined %}
 					<p style="color:red;">Identifiant et/ou mot de passe incorrecte</p>
 				{% endif %}
-				<form action="./homeConnect" method="post">
 					<h2>Inscription</h2>
 					<label for="username">Pseudo</label>
 					<input type="text" name="username" id="username" require>
 					<label for="mail">Email</label>
 					<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" require>
 					<label for="password">Mot de passe</label>
-					<input type="text" name="password" id="password" require>
+					<input type="password" name="password" id="password" require>
+					<input type="submit" value="Valider">
 					<p>Tu as déjà un compte?
 						<a href="#" id="connection">Connexion</a>
 					</p>
@@ -235,17 +237,22 @@
 		</div>
 
 		{% if session.connected is defined and session.connected == true %}
-			<a href="#" id="iconConnectPhone"><img src="./asset/img/iconConnectOn.png" alt="conection"></a>
+			<a href="./disconnect" id="iconConnectPhoneOn"><img src="./asset/img/iconConnectOn.png" alt="conection"></a>
 		{% else %}
 			<a href="#" id="iconConnectPhone"><img src="./asset/img/iconConnectOff.png" alt="conection"></a>
 		{% endif %}
+		
 		<div id="containerConnectPhone">
-			<form action="#" method="POST">
+			<form action="./homeConnect" method="POST">
 				<h2>Se connecter</h2>
+				{% if get.err is defined %}
+					<p style="color:red;">Identifiant et/ou mot de passe incorrecte</p>
+				{% endif %}
 				<label for="mail">Email</label>
-				<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" require>
+				<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" required>
 				<label for="password">Mot de passe</label>
-				<input type="text" name="password" id="password" require>
+				<input type="password" name="password" id="password" required>
+				<input type="submit" value="Connexion">
 				<p>Mot de passe oublié?
 					<a href="#">Clique ici!</a>
 				</p>
@@ -256,14 +263,18 @@
 			</form>
 		</div>
 		<div id="containerRegisterPhone">
-			<form action="#" method="post">
+			<form action="./disconnect" method="POST">
+			{% if get.erro is defined %}
+					<p style="color:red;">Identifiant et/ou mot de passe déja utiliser</p>
+				{% endif %}
 				<h2>Inscription</h2>
 				<label for="username">Pseudo</label>
-				<input type="text" name="username" id="username" require>
+				<input type="text" name="username" id="username" required>
 				<label for="mail">Email</label>
-				<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" require>
+				<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" required>
 				<label for="password">Mot de passe</label>
-				<input type="text" name="password" id="password" require>
+				<input type="password" name="password" id="password" required>
+				<input type="submit" value="Valider">
 				<p>Tu as déjà un compte?
 					<a href="#" id="connectionPhone">Connection</a>
 				</p>
