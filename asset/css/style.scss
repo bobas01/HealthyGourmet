@@ -1,3 +1,5 @@
+$green: #48b065;
+$black: #333;
 *,
 ::after,
 ::before {
@@ -7,10 +9,10 @@
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     list-style-type: none;
+    color: $black;
 }
 
-$green: #48b065;
-$black: #333;
+
 
 
 .row-limite-size {
@@ -19,6 +21,7 @@ $black: #333;
     margin: 0 auto;
 
 }
+
 .titleSection {
     text-align: center;
     font-weight: 700;
@@ -26,6 +29,7 @@ $black: #333;
     color: $green;
     margin: 50px 0;
 }
+
 .articleHomePage {
     width: 230px;
     overflow: auto;
@@ -137,17 +141,20 @@ header {
                         }
                     }
 
+
                     .secondTab {
                         display: none;
                     }
 
+
+
                 }
 
-                #breakfast #secondTabBreakfast.active3,
-                #starter #secondTabStarter.active4,
-                #dish #secondTabDish.active5,
-                #desert #secondTabDesert.active6 {
-                    display: block;
+                #breakfastPhone ul#secondTabBreakfastPhone.active3,
+                #starterPhone #secondTabStarterPhone.active4,
+                #dishPhone #secondTabDishPhone.active5,
+                #desertPhone #secondTabDesertPhone.active6 {
+
                     display: flex;
                     flex-wrap: wrap;
                     width: 100%;
@@ -174,6 +181,8 @@ header {
 
                     }
                 }
+
+
             }
 
         }
@@ -535,36 +544,98 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+
     .articleHomePage {
         margin: 20px 0;
     }
 
-  }
+}
+
 /*phone random*/
 main {
     #random {
         padding: 50px 0;
 
         .row-limit-size {
-           
+
 
             article {
                 margin: 0 auto;
             }
         }
     }
+
     #breakfastRecipe {
-        .row-limit-size{
+        .row-limit-size {
             .containerFourRecipe {
-              display: flex;
-               
+                display: flex;
+
 
             }
         }
     }
 }
 
+/* section yours phone*/
+.divYours > h2 {
+    padding: 50px 0;
 
+}
+.articleYours {
+    display: flex;
+    width: 90%;
+    margin: 50px auto;
+    justify-content: space-between;
+
+    &>a .miniPictureRecipe {
+        width: 75px;
+    }
+
+    h3 {
+        font-size: 0.7rem;
+        width: 50%;
+
+    }
+}
+
+
+/*yours tablet*/
+@media screen and (min-width: 600px) {
+    .divYours > h2 {
+        font-size: 1.4rem;
+        
+    }
+    .articleYours {
+
+
+        &>a .miniPictureRecipe {
+            width: 100px;
+        }
+
+        h3 {
+            font-size: 1rem;
+            width: 50%;
+
+        }
+    }
+}
+
+@media screen and (min-width: 1000px){
+    #yours {
+       width: 100%;
+        &>.row-limit-size {
+            display: flex;
+            justify-content: space-evenly;
+            max-width: 1200px;
+            margin: 0 auto;
+            .divYours{
+                width: 100%;
+            }
+        }
+    }
+    
+
+}
 
 
 
@@ -582,7 +653,7 @@ footer {
         justify-content: space-evenly;
         align-items: center;
         height: 150px;
-        color: #fff;
+        
         font-weight: bold;
 
         div:first-child {
@@ -595,6 +666,7 @@ footer {
             span {
                 display: inline-block;
                 line-height: 150px;
+                color: #fff;
             }
 
         }

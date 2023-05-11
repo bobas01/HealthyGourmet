@@ -1,0 +1,44 @@
+{% extends "template.html.twig" %}
+
+{% block title %}Vos recettes
+{% endblock %}
+
+
+{% block content %}
+	<section id="yours">
+		<div class="row-limit-size">
+			<div class='divYours'>
+				<h2 class='titleSection'>Vos recettes</h2>
+				{% for yourRecipe in yourRecipes %}
+					<article class="articleYours">
+						<a href=""><img class='miniPictureRecipe' src="./asset/img/{{yourRecipe.thumbnail}}" alt="{{yourRecipe.title}}"></a>
+						<h3>{{yourRecipe.title}}</h3>
+						<div id="iconPencilDelet">
+						<a href="#"><img src="./asset/img/inconPencil" alt=""></a>
+						<a href="#"><img src="./asset/img/iconX" alt=""></a>
+						</div>
+
+					</article>
+				{% endfor %}
+			</div>
+			
+			<div class='divYours'>
+				<h2 class='titleSection'>Vos favoris</h2>
+				{% for favorite in favorites %}
+					<article  class="articleYours">
+						<a href=""><img class='miniPictureRecipe' src="./asset/img/{{favorite.thumbnail}}" alt="{{favorite.title}}"></a>
+						<h3>{{favorite.title}}</h3>
+						<a href="#"><img src="./asset/img/iconX" alt=""></a>
+					
+
+					</article>
+				{% endfor %}
+			</div>
+				
+
+
+		</div>
+	</section>
+
+
+{% endblock %}

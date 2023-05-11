@@ -27,12 +27,12 @@ class UserModel extends Model
     {
 
         $passHashed = password_hash($pass, PASSWORD_DEFAULT);
-
+        $username = $_POST['username'];
         $mailVerif = filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL);
 
         if (!empty($_POST)) {
 
-                $register = $this->getdb()->prepare("INSERT INTO `user` ( `username`, `password`, `mail`) VALUES ( :username, :pass, :mail)");
+                $register = $this->getdb()->prepare("INSERT INTO `user` ( `username`, `password`, `mail`, `created-at`) VALUES ( :username, :pass, :mail, NOW())");
 
 
                 $register->bindParam('username', $username, PDO::PARAM_STR);

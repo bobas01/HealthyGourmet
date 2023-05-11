@@ -6,9 +6,7 @@ class RecipeController extends Controller
         global $router;
         $manager = new RecipeModel();
         $datasRandom = $manager->getRandomRecipe();
-
         $datasBreakfast = $manager->getLastFourBreakfast();
-
         $datasEntree = $manager->getLastFourEntree();
         $datasMaincourse = $manager->getLastFourMaincourse();
         $datasDessert = $manager->getLastFourDessert();
@@ -29,11 +27,50 @@ class RecipeController extends Controller
         $manager = new RecipeModel();
         $datasResultResearch = $manager->getResultReasearch($_GET['s']);
 
-       
+
 
         $twig = $this->loaderTwig();
         $action = $router->generate('resultResearch');
 
         echo $twig->render('resultResearch.html.twig', ['resultResearchs' => $datasResultResearch, 'action' => $action]);
+    }
+
+    // public function newRecipe()
+    // {
+
+    //     global $router;
+    //     $manager = new RecipeModel();
+    //     $datasNewRecipe = $manager->getAddRecipe($_POST['description'], $_POST['user_id'], $_POST['title'], $_POST['difficulty'], $_POST['duration'],  $_POST['cooking_time'], $_POST['step']);
+
+
+
+    
+
+    //     if ($datasNewRecipe) {
+    //         try {
+    //             $_SESSION['success'] = "Recette ajouté ajouté";
+    //             header('Location: ./newRecipe');
+    //             exit();
+    //         } catch (PDOException $e) {
+    //             header('Location: ./newRecipe');
+    //             $_SESSION['success'] = "Il y a eu un problème lors de l'enregistrement des informations. Veuillez réessayer à nouveau.";
+    //             exit();
+    //         }
+    //     }
+    // }
+    public function yourRecipe()
+    {
+
+        global $router;
+        $manager = new RecipeModel();
+        
+        $datasYourRecipe = $manager->getYourRecipe($_SESSION['id_user'] );
+        $datasFavorites = $manager->getFavorite($_SESSION['id_user'] );
+      
+        
+        $twig = $this->loaderTwig();
+        $linkRecipe = $router->generate('yourRecipe');
+
+        echo $twig->render('yourRecipe.html.twig', ['yourRecipes' => $datasYourRecipe, 'favorites' =>$datasFavorites, 'linkRecipe' => $linkRecipe]);
     }
 }

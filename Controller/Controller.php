@@ -2,7 +2,7 @@
 abstract class Controller {
     public function loaderTwig()
     { 
-        session_start();
+        
         $loader = new \Twig\Loader\FilesystemLoader('./view');
         $twig = new \Twig\Environment($loader, [
             'cache' => false,

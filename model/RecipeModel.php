@@ -82,7 +82,7 @@ class RecipeModel extends Model
     {
         $resultReasearchs = [];
         $research = null;
-       
+
 
         if (isset($s)) {
             $s = htmlspecialchars($s);
@@ -94,7 +94,7 @@ class RecipeModel extends Model
         if (!empty($research)) {
             $research = strtolower($research);
             $search_term = '%' . $research . '%';
-           
+
             $select_research = $this->getdb()->prepare("SELECT DISTINCT `recipe`.`id`, `recipe`.`title`, `category`.`name`, `ingredient`.`name`, `recipe`.`thumbnail`, `recipe`.`description`  FROM `recipe`
                 INNER JOIN `category_recipe`
                 ON `category_recipe`.`recipe_id`=`recipe`.`id`
@@ -109,22 +109,74 @@ class RecipeModel extends Model
                 
                 WHERE `recipe`.`title` LIKE :search_term OR `category`.`name` LIKE :search_term OR `ingredient`.`name` LIKE  :search_term 
                 GROUP BY id ;");
-              
+
             $select_research->bindValue(':search_term', $search_term, PDO::PARAM_STR);
 
-            $select_research->execute(); 
-          
+            $select_research->execute();
+
             while ($resultReasearch = $select_research->fetch(PDO::FETCH_ASSOC)) {
                 $resultReasearchs[] = new Recipe($resultReasearch);
-                
             }
-          
+
             $select_research->closeCursor();
             return $resultReasearchs;
-           
         } else {
             $message = "Vous devez entrer votre requete dans la barre de recherche";
             echo $message;
         }
+    }
+    public function getAddRecipe($description, $user_id, $title,  $difficulty, $duration, $cooking_time, $step)
+    {
+        if (isset($_POST['submit'])) {
+           
+            $newRecipe = $this->getdb()->prepare("INSERT INTO `recipe`( `title`, `user_id`, `difficulty`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`) VALUE (:title, :user_id, :difficulty, :duration, :cooking_time, :number_of_person, NOW(), ':description', :step )");
+            $newRecipe->bindParam(':title', $title, PDO::PARAM_STR);
+            $newRecipe->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $newRecipe->bindParam(':difficulty', $difficulty, PDO::PARAM_INT);
+            $newRecipe->bindParam(':duration', $duration, PDO::PARAM_INT);
+            $newRecipe->bindParam(':cooking_time', $cooking_time, PDO::PARAM_INT);
+            $newRecipe->bindParam(':number_of_person', $number_of_person, PDO::PARAM_INT);
+            $newRecipe->bindParam(':description', $description, PDO::PARAM_STR);
+            $newRecipe->bindParam(':step', $step, PDO::PARAM_STR);
+            $newRecipe->execute();
+            return $newRecipe;
+        }
+    }
+
+    public function getYourRecipe($id)
+    {
+        $yourRecipes = [];
+        
+        $lastRecipe = $this->getdb()->prepare('SELECT `recipe`.`id`,`title`, `recipe`.`user_id`, `thumbnail` FROM `recipe`
+        INNER JOIN `user`
+        ON `user`.`id`= recipe.`user_id`
+        WHERE `user`.`id`= :id ORDER BY `recipe`.`id` DESC ;');
+        $lastRecipe->bindParam(':id', $id, PDO::PARAM_INT);
+        $lastRecipe->execute();
+      
+        while ($yourRecipe = $lastRecipe->fetch(PDO::FETCH_ASSOC)) {
+            $yourRecipes[] = new Recipe($yourRecipe);  
+           
+        }
+        $lastRecipe->closeCursor();
+        return $yourRecipes;
+    
+    }
+    public function getFavorite($id){
+        $favorites=[];
+        $recipeFavorite= $this->getdb()->prepare("SELECT `recipe`.`id`,`title`, `recipe`.`user_id`, `thumbnail` FROM `recipe`
+        INNER JOIN `bookmate`
+        ON `bookmate`.`recipe_id`=`recipe`.`id`
+        INNER JOIN `user`
+        ON `user`.`id`= `bookmate`.`user_id`
+        WHERE `user`.`id`= :id ORDER BY `recipe`.`id` DESC");
+         $recipeFavorite->bindParam(':id', $id, PDO::PARAM_INT);
+         $recipeFavorite->execute();
+         while ($favorite = $recipeFavorite->fetch(PDO::FETCH_ASSOC)) {
+            $favorites[] = new Recipe($favorite);  
+           
+        }
+        $recipeFavorite->closeCursor();
+        return $favorites;
     }
 }

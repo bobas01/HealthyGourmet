@@ -14,8 +14,10 @@ class UserController extends Controller
 
         if ($datasConnexion !== null && password_verify($pass, $datasConnexion['password'])) {
             $_SESSION['id_user'] = $datasConnexion['id'];
+           
             $_SESSION['mail'] = $datasConnexion['mail'];
             $_SESSION['connected'] = true;
+           
             header('Location: ./');
             exit();
         } else {
@@ -30,38 +32,24 @@ class UserController extends Controller
         $manager = new UserModel();
 
         $datasRegister = $manager->getRegister($_POST['password']);
-
-        $twig = $this->loaderTwig();
-        $registered = $router->generate('homeConnect');
-
-        echo $twig->render('homePage.html.twig', ['register' => $datasRegister,  'registered' => $registered]);
-    }
-    public function verif()
-    {
-        global $router;
-
-        $manager = new UserModel();
-
-        $datasRegister = $manager->getRegister($_POST['password']);
+        
         $datasVerif = $manager->getVerif();
 
 
 
         if ($datasVerif['count'] > 0) {
-            header('Location: ./home?erro=1');
+            header('Location: ./?erro=1');
             exit();
         } else {
             $datasRegister;
-            header('Location: ./home');
+            header('Location: ./');
             exit();
         }
-
-
-       
     }
+ 
     public function disconnect()
     {
-        session_start();
+        
         if( $_SESSION['connected'] = true){
            session_destroy();
         header('location: ./');

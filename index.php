@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './vendor/autoload.php';
 
 require_once './vendor/altorouter/altorouter/AltoRouter.php';
@@ -11,6 +12,10 @@ $router->map('POST', '/homeConnect', 'UserController#connexion', 'homeConnect' )
 $router->map('GET', '/search', 'RecipeController#resultResearch', 'resultResearch' );
 $router->map('GET', '/disconnect', 'UserController#disconnect', 'disconnect' );
 $router->map('POST', '/register', 'UserController#register', 'register' );
+$router->map('POST', '/newRecipe', 'RecipeController#newRecipe', 'newRecipe' );
+$router->map('GET', '/yourRecipe', 'RecipeController#yourRecipe', 'yourRecipe' );
+
+
 
 $match = $router->match();
 
