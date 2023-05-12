@@ -1,0 +1,47 @@
+{% extends "template.html.twig" %}
+
+{% block title %}Recette
+{% endblock %}
+
+
+{% block content %}
+	<section id='details'>
+		<div class="row-limit-size">
+			<h2 class='titleSection'>{{ oneRecipe.title }}</h2>
+			<div id='containerOneRecipe'>
+				<div id='imgIngredients'>
+					<figure><img src="{{style}}img/{{ oneRecipe.thumbnail }}" alt="{{ oneRecipe.title }}"></figure>
+					<article>
+						<h3 class='titleOneRecipe'>Ingredients :</h3>
+						<ul>
+							{% for ingredient in ingredients %}
+								<li>
+									{{ ingredient.quantity }}&nbsp;{{ ingredient.unity }}&nbsp;{{ ingredient.name }}
+								</li>
+							{% endfor %}
+						</ul>
+					</article>
+				</div>
+				<div id='preparation'>
+					<article>
+						<h3 class='titleOneRecipe'>Préparation</h3>
+						<p>
+							{{ oneRecipe.step|nl2br }}
+						</p>
+					</article>
+					<div id='timeCooking'>
+						<div>
+							<h3 class='titleOneRecipe'>Termps de préparation</h3>
+							<p>{{oneRecipe.duration}}&nbsp;min</p>
+						</div>
+						<div>
+							<h3 class='titleOneRecipe'>Temps de cuisson</h3>
+							<p>
+								{{oneRecipe.cooking_time}}&nbsp;min</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

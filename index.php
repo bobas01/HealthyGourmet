@@ -14,6 +14,8 @@ $router->map('GET', '/disconnect', 'UserController#disconnect', 'disconnect' );
 $router->map('POST', '/register', 'UserController#register', 'register' );
 $router->map('POST', '/newRecipe', 'RecipeController#newRecipe', 'newRecipe' );
 $router->map('GET', '/yourRecipe', 'RecipeController#yourRecipe', 'yourRecipe' );
+$router->map('GET', '/recipe/','', 'baseRecipe');
+$router->map('GET', '/recipe/[i:id]?', 'RecipeController#oneRecipe', 'oneRecipe');
 
 
 

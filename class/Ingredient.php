@@ -4,6 +4,7 @@ class Ingredient {
     Private $id = 1;
     Private $name = 'cake';
     Private $unity = '1';
+    Private $quantity = NULL;
    
    
     
@@ -30,6 +31,9 @@ class Ingredient {
     public function getunity(){
         return $this->unity;
     }
+    public function getQuantity(){
+        return $this->quantity;
+    }
     
      
      public function setId(int $id){
@@ -40,5 +44,8 @@ class Ingredient {
     }
     public function setUnity(string $unity){
         return $this->unity=$unity;
+    }
+    public function setQuantity(int $quantity){
+        return $this->quantity=$quantity;
     }
 }

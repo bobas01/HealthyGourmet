@@ -1,5 +1,6 @@
 $green: #48b065;
 $black: #333;
+
 *,
 ::after,
 ::before {
@@ -577,10 +578,11 @@ main {
 }
 
 /* section yours phone*/
-.divYours > h2 {
+.divYours>h2 {
     padding: 50px 0;
 
 }
+
 .articleYours {
     display: flex;
     width: 90%;
@@ -601,10 +603,11 @@ main {
 
 /*yours tablet*/
 @media screen and (min-width: 600px) {
-    .divYours > h2 {
+    .divYours>h2 {
         font-size: 1.4rem;
-        
+
     }
+
     .articleYours {
 
 
@@ -620,29 +623,89 @@ main {
     }
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1000px) {
     #yours {
-       width: 100%;
+        width: 100%;
+
         &>.row-limit-size {
             display: flex;
             justify-content: space-evenly;
             max-width: 1200px;
             margin: 0 auto;
-            .divYours{
+
+            .divYours {
                 width: 100%;
             }
         }
     }
-    
+
 
 }
 
+/* section details phone*/
+.titleOneRecipe {
+    color: $green;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 50px 0;
+}
+#imgIngredients {
+    figure img {
+        width: 210px;
+        margin: 50px auto;
+        display: block;
+    }
+    article ul  {
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+       
+        li {
+            margin:10px 0;
+             list-style-type: square;
+             font-size: 1rem;
+        }
+    }  
+}
+#preparation {
+    article p {
+       
+        width: 80%;
+        margin: 0 auto;
+
+    }
+    #timeCooking {
+        p {
+            text-align: center;
+        }
+    }
+}
+
+/* section details tablet*/
+@media screen and (min-width: 600px) {
+    #preparation {
+        
+        #timeCooking {
+           display: flex;
+           justify-content: space-evenly;
+        }
+    }
+}
+@media screen and (min-width: 800px) {
+    #containerOneRecipe{
+        display: flex;
+        justify-content: space-evenly;
+        margin: 0 auto; 
+        width: 80%;
+    }
+}
 
 
 /*footer phone*/
 footer {
     padding-bottom: 50px;
     background-color: $green;
+    margin-top: 50px;
 
     img {
         width: 25px;
@@ -653,7 +716,7 @@ footer {
         justify-content: space-evenly;
         align-items: center;
         height: 150px;
-        
+
         font-weight: bold;
 
         div:first-child {

@@ -14,29 +14,46 @@
 						<a href=""><img class='miniPictureRecipe' src="./asset/img/{{yourRecipe.thumbnail}}" alt="{{yourRecipe.title}}"></a>
 						<h3>{{yourRecipe.title}}</h3>
 						<div id="iconPencilDelet">
-						<a href="#"><img src="./asset/img/inconPencil" alt=""></a>
-						<a href="#"><img src="./asset/img/iconX" alt=""></a>
+							<a href="#"><img src="./asset/img/inconPencil" alt=""></a>
+							<a href="#"><img src="./asset/img/iconX" alt=""></a>
 						</div>
 
 					</article>
 				{% endfor %}
 			</div>
-			
+
 			<div class='divYours'>
 				<h2 class='titleSection'>Vos favoris</h2>
 				{% for favorite in favorites %}
-					<article  class="articleYours">
+					<article class="articleYours">
 						<a href=""><img class='miniPictureRecipe' src="./asset/img/{{favorite.thumbnail}}" alt="{{favorite.title}}"></a>
 						<h3>{{favorite.title}}</h3>
 						<a href="#"><img src="./asset/img/iconX" alt=""></a>
-					
+
 
 					</article>
 				{% endfor %}
 			</div>
-				
 
 
+		</div>
+	</section>
+
+	<section id='addRecipe'>
+		<h2 class="titleSection">Nouvelle recette</h2>
+		<div class="row-limit-size">
+		<form action="" method="post">
+		<label for="title">Nom</label>
+		<input type="text" name="title" id="title">
+		<label for="description">Description</label>
+		<input type="text" name="description" id="description">
+		<label for="duration">Tenps de préparation</label>
+		<input type="number" name="duration" id="duration">
+		<label for="cooking_time">Temps de cuisson</label>
+		<input type="number" name="cooking_time" id="cooking_time">
+		<label for="preparation">Préparation</label>
+		<textarea name="preparation" id="preparation" cols="30" rows="10"></textarea>
+		</form>
 		</div>
 	</section>
 

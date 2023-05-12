@@ -10,7 +10,7 @@
 
 			<h2 class='titleSection'>Selection du jour</h2>
 			<article class='articleHomePage'>
-				<img src="./asset/img/{{random.thumbnail}}" alt="{{random.title}}">
+				<a href="{{ link }}{{ random.id }}"><img src="{{style}}img/{{random.thumbnail}}" alt="{{random.title}}"></a>
 				<h3>{{random.title}}</h3>
 
 				<p>{{random.description}}</p>
@@ -26,7 +26,7 @@
 			<div class= 'containerFourRecipe'>
 				{% for breakfast in breakfasts %}
 					<article class='articleHomePage'>
-						<a href="#"><img src="./asset/img/{{breakfast.thumbnail}}" alt="{{breakfast.title}}"></a>
+						<a href="{{ link }}{{ breakfast.id }}"><img src="{{style}}img/{{breakfast.thumbnail}}" alt="{{breakfast.title}}"></a>
 						<h3>{{breakfast.title}}</h3>
 						<p>{{breakfast.description}}</p>
 
@@ -41,7 +41,7 @@
 			<div class= 'containerFourRecipe'>
 				{% for entree in entrees %}
 					<article class='articleHomePage'>
-						<a href="#"><img src="./asset/img/{{entree.thumbnail}}" alt="{{entree.title}}"></a>
+						<a href="{{ link }}{{entree.id}}"><img src="{{style}}img/{{entree.thumbnail}}" alt="{{entree.title}}"></a>
 						<h3>{{entree.title}}</h3>
 						<p>{{entree.description}}</p>
 						

@@ -15,11 +15,20 @@ class RecipeController extends Controller
 
         $twig = $this->loaderTwig();
 
-        $link = $router->generate('home');
+        $link = $router->generate('baseRecipe');
 
 
 
         echo $twig->render('homePage.html.twig', ['random' => $datasRandom, 'breakfasts' => $datasBreakfast, 'entrees' => $datasEntree, 'maincourses' => $datasMaincourse, 'desserts' => $datasDessert, 'link' => $link]);
+    }
+    public function oneRecipe(int $id) {
+        $manager = new RecipeModel();
+        $datasRecipe = $manager->getOneRecipe($id);
+        $datasIngredient= $manager->getIngredient($id);
+       
+        $twig = $this->loaderTwig();
+
+        echo $twig->render('oneRecipe.html.twig', ['ingredients' => $datasIngredient, 'oneRecipe' => $datasRecipe]);
     }
     public function resultResearch()
     {
@@ -34,6 +43,22 @@ class RecipeController extends Controller
 
         echo $twig->render('resultResearch.html.twig', ['resultResearchs' => $datasResultResearch, 'action' => $action]);
     }
+    public function yourRecipe()
+    {
+
+        global $router;
+        $manager = new RecipeModel();
+        
+        $datasYourRecipe = $manager->getYourRecipe($_SESSION['id_user'] );
+        $datasFavorites = $manager->getFavorite($_SESSION['id_user'] );
+      
+        
+        $twig = $this->loaderTwig();
+        $linkRecipe = $router->generate('yourRecipe');
+
+        echo $twig->render('yourRecipe.html.twig', ['yourRecipes' => $datasYourRecipe, 'favorites' =>$datasFavorites, 'linkRecipe' => $linkRecipe]);
+    }
+    
 
     // public function newRecipe()
     // {
@@ -58,19 +83,5 @@ class RecipeController extends Controller
     //         }
     //     }
     // }
-    public function yourRecipe()
-    {
-
-        global $router;
-        $manager = new RecipeModel();
-        
-        $datasYourRecipe = $manager->getYourRecipe($_SESSION['id_user'] );
-        $datasFavorites = $manager->getFavorite($_SESSION['id_user'] );
-      
-        
-        $twig = $this->loaderTwig();
-        $linkRecipe = $router->generate('yourRecipe');
-
-        echo $twig->render('yourRecipe.html.twig', ['yourRecipes' => $datasYourRecipe, 'favorites' =>$datasFavorites, 'linkRecipe' => $linkRecipe]);
-    }
+   
 }

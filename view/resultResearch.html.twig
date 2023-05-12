@@ -10,7 +10,7 @@
 			<div class= 'containerFourRecipe'>
 				{% for resultReasearch in resultResearchs %}
 					<article class='articleHomePage'>
-						<a href="#"><img src="./asset/img/{{resultReasearch.thumbnail}}" alt="{{resultReasearch.title}}"></a>
+						<a href="#"><img src="{{style}}{{resultReasearch.thumbnail}}" alt="{{resultReasearch.title}}"></a>
 						<h3>{{resultReasearch.title}}</h3>
 						<p>{{resultReasearch.description}}</p>
 
