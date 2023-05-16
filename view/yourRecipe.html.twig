@@ -11,11 +11,11 @@
 				<h2 class='titleSection'>Vos recettes</h2>
 				{% for yourRecipe in yourRecipes %}
 					<article class="articleYours">
-						<a href=""><img class='miniPictureRecipe' src="./asset/img/{{yourRecipe.thumbnail}}" alt="{{yourRecipe.title}}"></a>
+						<a href=""><img class='miniPictureRecipe' src="{{style}}img/{{yourRecipe.thumbnail}}" alt="{{yourRecipe.title}}"></a>
 						<h3>{{yourRecipe.title}}</h3>
 						<div id="iconPencilDelet">
-							<a href="#"><img src="./asset/img/inconPencil" alt=""></a>
-							<a href="#"><img src="./asset/img/iconX" alt=""></a>
+							<a href="#"><img src="{{style}}img/inconPencil" alt=""></a>
+							<a href="#"><img src="{{style}}img/iconX" alt=""></a>
 						</div>
 
 					</article>
@@ -26,9 +26,9 @@
 				<h2 class='titleSection'>Vos favoris</h2>
 				{% for favorite in favorites %}
 					<article class="articleYours">
-						<a href=""><img class='miniPictureRecipe' src="./asset/img/{{favorite.thumbnail}}" alt="{{favorite.title}}"></a>
+						<a href=""><img class='miniPictureRecipe' src="{{style}}img/{{favorite.thumbnail}}" alt="{{favorite.title}}"></a>
 						<h3>{{favorite.title}}</h3>
-						<a href="#"><img src="./asset/img/iconX" alt=""></a>
+						<a href="#"><img src="{{style}}img/iconX" alt=""></a>
 
 
 					</article>
@@ -41,8 +41,10 @@
 
 	<section id='addRecipe'>
 		<h2 class="titleSection">Nouvelle recette</h2>
+		
 		<div class="row-limit-size">
-		<form action="" method="post">
+		<form action="{{page}}newRecipe" method="post" enctype="multipart/form-data">
+		<p>{{session.success}}</p>
 		<label for="title">Nom</label>
 		<input type="text" name="title" id="title">
 		<label for="description">Description</label>
@@ -51,8 +53,19 @@
 		<input type="number" name="duration" id="duration">
 		<label for="cooking_time">Temps de cuisson</label>
 		<input type="number" name="cooking_time" id="cooking_time">
-		<label for="preparation">Préparation</label>
-		<textarea name="preparation" id="preparation" cols="30" rows="10"></textarea>
+		<label for="step">Préparation</label>
+		<textarea name="step" id="step" cols="30" rows="10"></textarea>
+		<select name="difficulty" id="diffyculty">
+			<option value="">Difficulté</option>
+			<option value="facile">Facile</option>
+			<option value="moyen">Moyen</option>
+			<option value="difficile">difficile</option>
+		</select>
+		<label for="number_of_person">Nombre de personnes</label>
+		<input type="number" name="number_of_person" id="number_of_person">
+		<label for="thumbnail">Image</label>
+		<input type="file" name="thumbnail" id="thumbnail" accept='image/*'>
+		<input type="submit" value="Seconde étape">
 		</form>
 		</div>
 	</section>

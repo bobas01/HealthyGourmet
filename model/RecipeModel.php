@@ -78,33 +78,32 @@ class RecipeModel extends Model
         $lastDessert->closeCursor();
         return $desserts;
     }
-    public function getOneRecipe(int $id) {
-        $one= $this->getdb()->prepare('SELECT `recipe`.`id`,`title`, `user_id`, `difficulty`, `thumbnail`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`  FROM `recipe`
+    public function getOneRecipe(int $id)
+    {
+        $one = $this->getdb()->prepare('SELECT `recipe`.`id`,`title`, `user_id`, `difficulty`, `thumbnail`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`  FROM `recipe`
         WHERE `recipe`.`id`=:id');
-           $one->bindParam('id', $id, (PDO::PARAM_INT));
-           $one->execute();
-           $oneRecipe = new Recipe($one->fetch(PDO::FETCH_ASSOC)); 
-           $one->closeCursor();
-           return $oneRecipe;
-           
+        $one->bindParam('id', $id, (PDO::PARAM_INT));
+        $one->execute();
+        $oneRecipe = new Recipe($one->fetch(PDO::FETCH_ASSOC));
+        $one->closeCursor();
+        return $oneRecipe;
     }
-    public function getIngredient(int $id){
-        $ingredients=[];
-        $oneIngredient= $this->getdb()->prepare('SELECT  `name`, `unity`, `recipe`.`id`, `ingredient_recipe`.`quantity` FROM `ingredient`
+    public function getIngredient(int $id)
+    {
+        $ingredients = [];
+        $oneIngredient = $this->getdb()->prepare('SELECT  `name`, `unity`, `recipe`.`id`, `ingredient_recipe`.`quantity` FROM `ingredient`
         INNER JOIN `ingredient_recipe`
         ON `ingredient_recipe`.`ingredient_id`= `ingredient`.`id`
         INNER JOIN `recipe`
         ON `ingredient_recipe`.`recipe_id`=`recipe`.`id`
         WHERE `recipe`.`id`=:id');
-           $oneIngredient->bindParam('id', $id, (PDO::PARAM_INT));
-           $oneIngredient->execute();
-         while($ingredient = $oneIngredient->fetch(PDO::FETCH_ASSOC)) {
+        $oneIngredient->bindParam('id', $id, (PDO::PARAM_INT));
+        $oneIngredient->execute();
+        while ($ingredient = $oneIngredient->fetch(PDO::FETCH_ASSOC)) {
             $ingredients[] = new Ingredient($ingredient);
-         } 
-           $oneIngredient->closeCursor();
-           return $ingredients;
-           
-           
+        }
+        $oneIngredient->closeCursor();
+        return $ingredients;
     }
     public function getResultReasearch($s)
     {
@@ -153,59 +152,60 @@ class RecipeModel extends Model
             echo $message;
         }
     }
-   
+
 
     public function getYourRecipe($id)
     {
         $yourRecipes = [];
-        
+
         $lastRecipe = $this->getdb()->prepare('SELECT `recipe`.`id`,`title`, `recipe`.`user_id`, `thumbnail` FROM `recipe`
         INNER JOIN `user`
         ON `user`.`id`= recipe.`user_id`
         WHERE `user`.`id`= :id ORDER BY `recipe`.`id` DESC ;');
         $lastRecipe->bindParam(':id', $id, PDO::PARAM_INT);
         $lastRecipe->execute();
-      
+
         while ($yourRecipe = $lastRecipe->fetch(PDO::FETCH_ASSOC)) {
-            $yourRecipes[] = new Recipe($yourRecipe);  
-           
+            $yourRecipes[] = new Recipe($yourRecipe);
         }
         $lastRecipe->closeCursor();
         return $yourRecipes;
-    
     }
-    public function getFavorite($id){
-        $favorites=[];
-        $recipeFavorite= $this->getdb()->prepare("SELECT `recipe`.`id`,`title`, `recipe`.`user_id`, `thumbnail` FROM `recipe`
+    public function getFavorite($id)
+    {
+        $favorites = [];
+        $recipeFavorite = $this->getdb()->prepare("SELECT `recipe`.`id`,`title`, `recipe`.`user_id`, `thumbnail` FROM `recipe`
         INNER JOIN `bookmate`
         ON `bookmate`.`recipe_id`=`recipe`.`id`
         INNER JOIN `user`
         ON `user`.`id`= `bookmate`.`user_id`
         WHERE `user`.`id`= :id ORDER BY `recipe`.`id` DESC");
-         $recipeFavorite->bindParam(':id', $id, PDO::PARAM_INT);
-         $recipeFavorite->execute();
-         while ($favorite = $recipeFavorite->fetch(PDO::FETCH_ASSOC)) {
-            $favorites[] = new Recipe($favorite);  
-           
+        $recipeFavorite->bindParam(':id', $id, PDO::PARAM_INT);
+        $recipeFavorite->execute();
+        while ($favorite = $recipeFavorite->fetch(PDO::FETCH_ASSOC)) {
+            $favorites[] = new Recipe($favorite);
         }
         $recipeFavorite->closeCursor();
         return $favorites;
     }
-    public function getAddRecipe($description, $user_id, $title,  $difficulty, $duration, $cooking_time, $step)
+    public function getAddRecipe($description, $user_id, $title,  $difficulty, $duration, $cooking_time, $step, $number_of_person, $thumbnail)
     {
-        if (isset($_POST['submit'])) {
-           
-            $newRecipe = $this->getdb()->prepare("INSERT INTO `recipe`( `title`, `user_id`, `difficulty`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`) VALUE (:title, :user_id, :difficulty, :duration, :cooking_time, :number_of_person, NOW(), ':description', :step )");
-            $newRecipe->bindParam(':title', $title, PDO::PARAM_STR);
-            $newRecipe->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-            $newRecipe->bindParam(':difficulty', $difficulty, PDO::PARAM_INT);
-            $newRecipe->bindParam(':duration', $duration, PDO::PARAM_INT);
-            $newRecipe->bindParam(':cooking_time', $cooking_time, PDO::PARAM_INT);
-            $newRecipe->bindParam(':number_of_person', $number_of_person, PDO::PARAM_INT);
-            $newRecipe->bindParam(':description', $description, PDO::PARAM_STR);
-            $newRecipe->bindParam(':step', $step, PDO::PARAM_STR);
-            $newRecipe->execute();
-            return $newRecipe;
-        }
+        
+
+
+
+        $newRecipe = $this->getdb()->prepare("INSERT INTO `recipe`( `title`, `user_id`, `difficulty`, `duration`, `cooking_time`, `number_of_person`, `published_at`, `description`, `step`, `thumbnail`) VALUE (:title, :user_id, :difficulty, :duration, :cooking_time, :number_of_person, NOW(), :description, :step, :thumbnail )");
+        $newRecipe->bindParam(':title', $title, PDO::PARAM_STR);
+        $newRecipe->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $newRecipe->bindParam(':difficulty', $difficulty, PDO::PARAM_STR);
+        $newRecipe->bindParam(':duration', $duration, PDO::PARAM_INT);
+        $newRecipe->bindParam(':cooking_time', $cooking_time, PDO::PARAM_INT);
+        $newRecipe->bindParam(':number_of_person', $number_of_person, PDO::PARAM_INT);
+        $newRecipe->bindParam(':description', $description, PDO::PARAM_STR);
+        $newRecipe->bindParam(':step', $step, PDO::PARAM_STR);
+        $newRecipe->bindParam(':thumbnail', $thumbnail, PDO::PARAM_INT);
+        $newRecipe->execute();
+        return $newRecipe;
     }
+   
 }
