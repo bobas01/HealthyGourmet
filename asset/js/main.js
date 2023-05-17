@@ -1,5 +1,5 @@
 const burger = document.getElementById('burger')
-const phoneMenu =document.getElementById('mainMenuPhone')
+const phoneMenu = document.getElementById('mainMenuPhone')
 
 const breakfast = document.getElementById('breakfastPhone')
 const secondTabBreakfast = document.getElementById('secondTabBreakfastPhone')
@@ -29,71 +29,72 @@ const closeRegisterPhone = document.getElementById('closeRegisterPhone')
 const closeConect = document.getElementById('closeConect')
 const closeConectPhone = document.getElementById('closeConectPhone')
 
+const formIngredient = document.getElementById('formIngredient')
 
-burger.addEventListener('click', function(){
+
+burger.addEventListener('click', function () {
   phoneMenu.classList.toggle('active');
 })
-breakfast.addEventListener('click', function(){
+breakfast.addEventListener('click', function () {
   secondTabBreakfast.classList.toggle('active3');
 })
-starter.addEventListener('click', function(){
+starter.addEventListener('click', function () {
   secondTabStarter.classList.toggle('active4');
 })
-dish.addEventListener('click', function(){
+dish.addEventListener('click', function () {
   secondTabDish.classList.toggle('active5');
 })
-desert.addEventListener('click', function(){
+desert.addEventListener('click', function () {
   secondTabDesert.classList.toggle('active6');
 })
-searchButton.addEventListener('click', function(){
+searchButton.addEventListener('click', function () {
   searchBar.classList.toggle('active7');
 })
-searchButtonPhone.addEventListener('click', function(){
+searchButtonPhone.addEventListener('click', function () {
   searchBarPhone.classList.toggle('active10');
 })
 
 
-iconConnect.addEventListener('click', function(e){
+iconConnect.addEventListener('click', function (e) {
   e.preventDefault()
   containerConnect.classList.toggle('active8');
-  
+
 })
-subscription.addEventListener('click', function(){
+subscription.addEventListener('click', function () {
   containerRegister.classList.toggle('active9');
   containerConnect.classList.toggle('active8');
 
 })
-connection.addEventListener('click', function(){
+connection.addEventListener('click', function () {
   containerConnect.classList.toggle('active8');
   containerRegister.classList.toggle('active9');
 })
-closeConect.addEventListener('click', function(){
+closeConect.addEventListener('click', function () {
   containerConnect.classList.toggle('active8');
-  
+
 })
-closeRegister.addEventListener('click', function(){
+closeRegister.addEventListener('click', function () {
 
   containerRegister.classList.toggle('active9');
 })
-iconConnectPhone.addEventListener('click', function(){
+iconConnectPhone.addEventListener('click', function () {
   containerConnectPhone.classList.toggle('active11');
-  
+
 })
-subscriptionPhone.addEventListener('click', function(){
+subscriptionPhone.addEventListener('click', function () {
   containerRegisterPhone.classList.toggle('active12');
   containerConnectPhone.classList.toggle('active11');
 
 })
-connectionPhone.addEventListener('click', function(){
+connectionPhone.addEventListener('click', function () {
   containerConnectPhone.classList.toggle('active11');
   containerRegisterPhone.classList.toggle('active12');
 })
-closeConectPhone.addEventListener('click', function(){
+closeConectPhone.addEventListener('click', function () {
   containerConnectPhone.classList.toggle('active11');
-  
+
 })
-closeRegisterPhone.addEventListener('click', function(){
+closeRegisterPhone.addEventListener('click', function () {
 
   containerRegisterPhone.classList.toggle('active12');
 })
-

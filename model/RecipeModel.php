@@ -203,9 +203,38 @@ class RecipeModel extends Model
         $newRecipe->bindParam(':number_of_person', $number_of_person, PDO::PARAM_INT);
         $newRecipe->bindParam(':description', $description, PDO::PARAM_STR);
         $newRecipe->bindParam(':step', $step, PDO::PARAM_STR);
-        $newRecipe->bindParam(':thumbnail', $thumbnail, PDO::PARAM_INT);
+        $newRecipe->bindParam(':thumbnail', $thumbnail, PDO::PARAM_STR);
         $newRecipe->execute();
         return $newRecipe;
+    }
+
+    public function addIngredient($name, $unity) {
+        $ingredients=[];
+        $ingredientNewRecipe = $this->getDb()->prepare("INSERT INTO ingredient (name, unity)
+        VALUES (:name, :unity)");
+        $ingredientNewRecipe->bindParam(':name', $name, PDO::PARAM_STR);
+        $ingredientNewRecipe->bindParam(':unity', $unity, PDO::PARAM_STR);
+        $ingredientNewRecipe->execute();
+        
+        return $this->getDb()->lastInsertId();
+
+    }
+    public function addQuantity($quantity){
+        $ingredientQuantity = $this->getDb()->prepare("INSERT INTO ingredient_recipe (ingredient_id, recipe_id, quantity)
+        VALUE (:recipe_id,:quantity)
+        -- SELECT `ingredient`.`id`, `ingredient`.`name`, `ingredient`.`unity` 
+        -- FROM `recipe`
+        -- INNER JOIN `ingredient_recipe`
+        -- ON `recipe`.`id`= `ingredient_recipe`.`recipe_id`
+        -- INNER JOIN `ingredient`
+        -- ON `ingredient`.`id` = `ingredient_recipe`.`ingredient_id`
+        -- WHERE `recipe`.`id`= (SELECT `id` FROM `recipe` ORDER BY `id` DESC LIMIT 1)
+        ");
+        $ingredientQuantity->bindParam(':quantity', $quantity, PDO::PARAM_STR);
+        $ingredientQuantity->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
+       
+        $ingredientQuantity->execute();
+        return $ingredientQuantity;
     }
    
 }
