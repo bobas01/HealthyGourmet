@@ -8,13 +8,21 @@ $router = new AltoRouter();
 $router->setBasePath('/php/HealthyGourmet');
 
 $router->map('GET', '/', 'RecipeController#homePage', 'home' );
-$router->map('POST', '/homeConnect', 'UserController#connexion', 'homeConnect' );
+
+$router->map('POST', '/login', 'UserController#login', 'login' );
+
 $router->map('GET', '/search', 'RecipeController#resultResearch', 'resultResearch' );
+
 $router->map('GET', '/disconnect', 'UserController#disconnect', 'disconnect' );
+
 $router->map('POST', '/register', 'UserController#register', 'register' );
+
 $router->map('POST', '/newRecipe', 'RecipeController#newRecipe', 'newRecipe' );
-$router->map('POST', '/newIngredient', 'RecipeController#newIngredient', 'newIngredient' );
+
+$router->map('POST', '/newIngredient', 'IngredientController#newIngredient', 'newIngredient' );
+
 $router->map('GET', '/yourRecipe', 'RecipeController#yourRecipe', 'yourRecipe' );
+
 $router->map('GET', '/recipe/','', 'baseRecipe');
 $router->map('GET', '/recipe/[i:id]?', 'RecipeController#oneRecipe', 'oneRecipe');
 

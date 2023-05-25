@@ -1,7 +1,13 @@
-let span =document.getElementById('spanPlus')
+let span = document.getElementById('spanPlus')
+const formAddRecipe = document.getElementById('formAddRecipe')
+const formIngredient = document.getElementById('formIngredient')
+const recipeIdInput = document.querySelector('input[name="recipe_id"]');
+
+let clickCount=1;
+
 
 span.addEventListener("click", function () {
-  
+
 
   const div = document.createElement('div')
 
@@ -14,24 +20,28 @@ span.addEventListener("click", function () {
   labelName.textContent = "Nom de l'ingrédient :";
   const nameIngredient = document.createElement('input');
   nameIngredient.type = 'text';
-  nameIngredient.name = 'name';
+  nameIngredient.name = 'name'+'_'+  clickCount;
 
   const quantityIngredient = document.createElement('input');
   const labelQuantity = document.createElement('label');
   labelQuantity.setAttribute("for", "quantity");
   labelQuantity.textContent = "Quantité";
-  quantityIngredient.type = 'text';
-  quantityIngredient.name = 'quantity';
+  quantityIngredient.type = 'number';
+  quantityIngredient.name = 'quantity'+'_'+ clickCount;
 
 
   const labelUnity = document.createElement('label')
   labelUnity.setAttribute("for", "unity");
   labelUnity.textContent = "Unité";
   const selectUnity = document.createElement('select');
-  selectUnity.setAttribute('name', 'unity');
+  const optionBase = document.createElement('option');
+  optionBase.setAttribute('value', '');
+  optionBase.textContent = "Choix de l'unité";
+  selectUnity.appendChild(optionBase);
+  selectUnity.setAttribute('name', 'unity'+'_'+ clickCount);
   selectUnity.setAttribute('id', 'unity');
   const optionNull = document.createElement('option');
-  optionNull.setAttribute('value', ''); 
+  optionNull.setAttribute('value', '');
   selectUnity.appendChild(optionNull);
   const optionG = document.createElement('option');
   optionG.setAttribute('value', 'g');
@@ -49,6 +59,14 @@ span.addEventListener("click", function () {
   optionMl.setAttribute('value', 'ml');
   optionMl.textContent = 'ml';
   selectUnity.appendChild(optionMl);
+  const optionCac = document.createElement('option');
+  optionCac.setAttribute('value', 'C.a.c');
+  optionCac.textContent = 'cuil. à café';
+  selectUnity.appendChild(optionCac);
+  const optionCas = document.createElement('option');
+  optionCas.setAttribute('value', 'C.a.s');
+  optionCas.textContent = 'cuil. à soupe';
+  selectUnity.appendChild(optionCas);
 
 
 
@@ -60,6 +78,39 @@ span.addEventListener("click", function () {
   div.appendChild(quantityIngredient);
   div.appendChild(labelUnity);
   div.appendChild(selectUnity);
-  formIngredient.appendChild(div);
-  
+  formIngredient.prepend(div);
+  clickCount++
 })
+
+/*ajax*/
+
+formAddRecipe.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+
+
+  const data = new FormData(formAddRecipe)
+
+
+  fetch('./newRecipe', {
+    method: 'POST',
+    body: data
+  })
+    .then((response) => response.json())
+    .then(datas => {
+      const lastInsertId = datas.datasNewRecipe;
+      console.log(datas);
+      recipeIdInput.value = lastInsertId;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  addIngredients.classList.toggle('activeIngredient');
+  formAddRecipe.classList.toggle('activeRecipe');
+
+})
+
+
+
+
+

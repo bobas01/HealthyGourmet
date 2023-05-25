@@ -29,7 +29,7 @@ const closeRegisterPhone = document.getElementById('closeRegisterPhone')
 const closeConect = document.getElementById('closeConect')
 const closeConectPhone = document.getElementById('closeConectPhone')
 
-const formIngredient = document.getElementById('formIngredient')
+
 
 
 burger.addEventListener('click', function () {
@@ -98,3 +98,16 @@ closeRegisterPhone.addEventListener('click', function () {
 
   containerRegisterPhone.classList.toggle('active12');
 })
+
+submitRecipe.addEventListener('click', function(){
+  addIngredients.classList.toggle('activeIngredient')
+})
+
+
+// const addRecipe = document.getElementById('addRecipe')
+// const addIngredients = document.getElementById('addIngredients')
+// const submitRecipe = document.getElementById('submitRecipe')
+
+// formAddRecipe.addEventListener('click', function () {
+//  addIngredients.classList.toggle('activeIngredient');
+// })

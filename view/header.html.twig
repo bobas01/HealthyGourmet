@@ -106,7 +106,7 @@
 				{% if get.err is defined %}
 					<p style="color:red;">Identifiant et/ou mot de passe incorrecte</p>
 				{% endif %}
-				<form action="{{page}}homeConnect" method="POST">
+				<form action="{{page}}login" method="POST">
 					<h2>Se connecter</h2>
 					<label for="mail">Email</label>
 					<input type="mail" name="mail" id="mail" placeholder="bobo@gmail.com" required>
@@ -244,7 +244,7 @@
 		{% endif %}
 		
 		<div id="containerConnectPhone">
-			<form action="{{page}}homeConnect" method="POST">
+			<form action="{{page}}login" method="POST">
 				<h2>Se connecter</h2>
 				{% if get.err is defined %}
 					<p style="color:red;">Identifiant et/ou mot de passe incorrecte</p>
@@ -264,7 +264,7 @@
 			</form>
 		</div>
 		<div id="containerRegisterPhone">
-			<form action="{{page}}disconnect" method="POST">
+			<form action="{{page}}register" method="POST">
 			{% if get.erro is defined %}
 					<p style="color:red;">Identifiant et/ou mot de passe déja utiliser</p>
 				{% endif %}

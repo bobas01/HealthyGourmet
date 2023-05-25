@@ -502,6 +502,101 @@ main #breakfastRecipe .row-limit-size .containerFourRecipe {
     width: 100%;
   }
 }
+/*addRecipe phone*/
+#addRecipe form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+#addRecipe form p,
+#addRecipe form label,
+#addRecipe form input,
+#addRecipe form textarea,
+#addRecipe form select {
+  width: 100%;
+  margin-bottom: 30px;
+}
+#addRecipe form p,
+#addRecipe form label {
+  font-weight: bold;
+}
+#addRecipe form input {
+  height: 30px;
+}
+#addRecipe form input[type=file] {
+  transform: scale(1.2);
+  height: unset;
+  width: 82%;
+  margin: 0 auto 30px auto;
+}
+#addRecipe form input,
+#addRecipe form textarea,
+#addRecipe form select {
+  border: 1px solid #48b065;
+}
+#addRecipe form select,
+#addRecipe form #submitRecipe {
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+#addRecipe form select option,
+#addRecipe form #submitRecipe option {
+  text-align: center;
+}
+
+#addIngredients {
+  display: none;
+  width: 80%;
+  margin: 0 auto;
+}
+#addIngredients h3 {
+  margin-bottom: 30px;
+  color: #48b065;
+}
+#addIngredients form #spanPlus {
+  margin-bottom: 30px;
+  display: block;
+}
+#addIngredients form #spanPlus img {
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+}
+#addIngredients form div label,
+#addIngredients form div input,
+#addIngredients form div select {
+  width: 100%;
+  margin-bottom: 30px;
+}
+#addIngredients form div label {
+  font-weight: bold;
+}
+#addIngredients form div input,
+#addIngredients form div select {
+  height: 30px;
+}
+#addIngredients form div select {
+  height: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+#addIngredients form input[type=submit] {
+  height: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+#addIngredients.activeIngredient {
+  display: block;
+}
+
+#formAddRecipe.activeRecipe {
+  display: none;
+}
+
 /* section details phone*/
 .titleOneRecipe {
   color: #48b065;

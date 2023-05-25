@@ -1,13 +1,13 @@
 <?php
 class UserController extends Controller
 {
-    public function connexion()
+    public function login()
     {
-        session_start();
+       
         global $router;
 
         $manager = new UserModel();
-        $datasConnexion = $manager->getConnexion($_POST['mail']);
+        $datasConnexion = $manager->getOneUserByMail($_POST['mail']);
 
         $pass = $_POST['password'];
 
@@ -34,7 +34,7 @@ class UserController extends Controller
         $datasRegister = $manager->getRegister($_POST['password']);
         
         $datasVerif = $manager->getVerif();
-
+        $datasConnexion = $manager->getOneUserByMail($_POST['mail']);
 
 
         if ($datasVerif['count'] > 0) {
@@ -42,6 +42,10 @@ class UserController extends Controller
             exit();
         } else {
             $datasRegister;
+            $_SESSION['id_user'] = $datasConnexion['id'];
+           
+            $_SESSION['mail'] = $datasConnexion['mail'];
+            $_SESSION['connected'] = true;
             header('Location: ./');
             exit();
         }

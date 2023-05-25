@@ -87,7 +87,7 @@ class RecipeController extends Controller
         $_POST['number_of_person'],
         $_FILES['thumbnail'])) {
        
-       
+     
 
             function resizeImg($tmp_name, $width, $height, $name)
             {
@@ -133,45 +133,9 @@ class RecipeController extends Controller
 
              resizeImg($_FILES['thumbnail']['tmp_name'], 300, 300, $_FILES['thumbnail']['name']);
 
-          
-
-                          
-
-            try {
-                $_SESSION['success'] = "Recette ajoutée";
-                header('Location: ./yourRecipe');
-                exit();
-            } catch (PDOException $e) {
-                header('Location: ./yourRecipe');
-                $_SESSION['success'] = "Il y a eu un problème lors de l'enregistrement des informations. Veuillez réessayer à nouveau.";
-                exit();
-            } 
-         
         }
+        echo json_encode($datasNewRecipe);
+         
     }
-    // public function newIngredient(){
-    //     global $router;
-    //     $manager = new RecipeModel();
-        
-    //     $newIngredientId = $manager->addIngredient(
-    //         $_POST['name'],
-            
-    //         $_POST['unity']
-           
-    //     );
-       
-        // $datasNewRecipe = $manager->addQuantity( $_POST['quantity']);
-        // if(isset($_POST['name'], $_POST['unity'],$_POST['quantity'])){
-        //     try {
-        //         $_SESSION['success'] = "Ingrédient ajoutée";
-        //         header('Location: ./yourRecipe');
-        //         exit();
-        //     } catch (PDOException $e) {
-        //         header('Location: ./yourRecipe');
-        //         $_SESSION['success'] = "Il y a eu un problème lors de l'enregistrement des informations. Veuillez réessayer à nouveau.";
-        //         exit();
-        //     }
-        // }
-    // }
-  
+   
 }

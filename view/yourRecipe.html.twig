@@ -43,50 +43,37 @@
 		<h2 class="titleSection">Nouvelle recette</h2>
 
 		<div class="row-limit-size">
-			<form action="{{page}}newRecipe" method="post" enctype="multipart/form-data">
-				<p>{{session.success}}</p>
-				<label for="title">Nom</label>
+			<form id="formAddRecipe" action="" method="post" enctype="multipart/form-data">
+				
+				<label for="title">Nom :</label>
 				<input type="text" name="title" id="title">
-				<label for="description">Description</label>
-				<input type="text" name="description" id="description">
-				<label for="duration">Tenps de préparation</label>
+				<label for="description">Description :</label>
+				<textarea name="description" id="description" cols="30" rows="10"></textarea>
+				<label for="duration">Temps de préparation :</label>
 				<input type="number" name="duration" id="duration">
-				<label for="cooking_time">Temps de cuisson</label>
+				<label for="cooking_time">Temps de cuisson :</label>
 				<input type="number" name="cooking_time" id="cooking_time">
-				<label for="step">Préparation</label>
-				<textarea name="step" id="step" cols="30" rows="10"></textarea>
-				<select name="difficulty" id="diffyculty">
+				<label for="step">Préparation :</label>
+				<textarea name="step" id="step" cols="30" rows="30"></textarea>
+				<select name="difficulty" id="difficulty">
 					<option value="">Difficulté</option>
 					<option value="facile">Facile</option>
 					<option value="moyen">Moyen</option>
 					<option value="difficile">difficile</option>
 				</select>
-				<label for="number_of_person">Nombre de personnes</label>
+				<label for="number_of_person">Nombre de personnes :</label>
 				<input type="number" name="number_of_person" id="number_of_person">
-				<label for="thumbnail">Image</label>
+				<label for="thumbnail">Image :</label>
 				<input type="file" name="thumbnail" id="thumbnail" accept='image/*'>
-				<input type="submit" value="Seconde étape">
+				<input id='submitRecipe' type="submit" value="Seconde étape">
 			</form>
 		</div>
 	</section>
 	<section id="addIngredients">
-		<h2>Ajoutez les ingredients</h2>
+		<h3>Ajoutez les ingredients</h3>
 		<form
-			id="formIngredient" action="{{page}}newRecipe" method="post">{# <label for="ingredient">Ingredient :</label>
-						<input type="text" name="name" id="name">
-						<label for="quantity">Quantité :</label>
-						<input type="text" name="quantity" id="quantity">
-						<label for="unity">Unité : </label>
-						<select name="unity" id="unity">
-						<option value="g">g</option>
-						<option value="pincée">pincée</option>
-						<option value="tranche">tranche</option>
-						<option value="ml">ml</option>
-						</select> #}
-
-		</select>
-		{# <input type="image" src="{{style}}img/iconPlus"> #}
+			id="formIngredient" action="{{page}}newIngredient" method="post">
 		<span id="spanPlus"><img src="{{style}}img/iconPlus" alt="plus"></span>
-		<input type="submit" value="envoyer">
+		<input type="submit" value="Ajouter">
 	</form>
-</body></html></form></section>{% endblock %}
+</section>{% endblock %}

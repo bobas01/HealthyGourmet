@@ -1,7 +1,7 @@
 <?php
 class UserModel extends Model
 {
-    public function getConnexion($mail)
+    public function getOneUserByMail(string $mail)
     {
         $user = null;
         $connect = $this->getdb()->prepare("SELECT `id`, `mail`, `password` FROM `user` WHERE `mail` = :mail");
