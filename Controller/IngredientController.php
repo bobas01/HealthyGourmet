@@ -6,8 +6,7 @@ class IngredientController extends Controller
     {
         global $router;
         $manager = new IngredientModel();
-        var_dump($_POST);
-          die();
+      
         $nb = (count($_POST) - 1) / 3;
         if (isset($_POST['recipe_id'])) {
             $recipeId = $_POST['recipe_id'];

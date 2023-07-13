@@ -29,6 +29,7 @@ $router->map('GET', '/recipe/[i:id]?', 'RecipeController#oneRecipe', 'oneRecipe'
 
 
 $match = $router->match();
+// var_dump($match);
 
 if(is_array($match)){
     list($controller, $action)= explode('#', $match['target']);

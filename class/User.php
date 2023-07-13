@@ -42,16 +42,16 @@ class User {
     
      
      public function setId(int $id){
-        return $this->id=$id;
+         $this->id=$id;
     }
      public function setUsername(string $username){
-        return $this->username=$username;
+         $this->username=$username;
     }
     public function setPassword(string $password){
-        return $this->password=$password;
+         $this->password=$password;
     }
     public function setMail(string $mail){
-        return $this->mail=$mail;
+         $this->mail=$mail;
     
     }
     

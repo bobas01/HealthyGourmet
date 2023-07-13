@@ -46,6 +46,7 @@ class UserController extends Controller
            
             $_SESSION['mail'] = $datasConnexion['mail'];
             $_SESSION['connected'] = true;
+           
             header('Location: ./');
             exit();
         }

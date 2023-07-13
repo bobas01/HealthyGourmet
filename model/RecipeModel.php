@@ -206,5 +206,9 @@ class RecipeModel extends Model
     }
 
 
+    public function delet(){
+        
+    }
+
    
 }

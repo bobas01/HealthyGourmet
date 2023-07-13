@@ -137,5 +137,10 @@ class RecipeController extends Controller
         echo json_encode($datasNewRecipe);
          
     }
+
+
+    public function deletRecipe() {
+
+    }
    
 }

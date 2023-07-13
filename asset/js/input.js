@@ -1,9 +1,8 @@
 let span = document.getElementById('spanPlus')
 const formAddRecipe = document.getElementById('formAddRecipe')
 const formIngredient = document.getElementById('formIngredient')
-const recipeIdInput = document.querySelector('input[name="recipe_id"]');
 
-let clickCount=1;
+let clickCount = 1;
 
 
 span.addEventListener("click", function () {
@@ -11,23 +10,19 @@ span.addEventListener("click", function () {
 
   const div = document.createElement('div')
 
-  const idRecipe = document.createElement('input');
-  idRecipe.type = 'hidden';
-  idRecipe.name = 'recipe_id';
-
   const labelName = document.createElement('label');
   labelName.setAttribute("for", "name");
   labelName.textContent = "Nom de l'ingrédient :";
   const nameIngredient = document.createElement('input');
   nameIngredient.type = 'text';
-  nameIngredient.name = 'name'+'_'+  clickCount;
+  nameIngredient.name = 'name' + '_' + clickCount;
 
   const quantityIngredient = document.createElement('input');
   const labelQuantity = document.createElement('label');
   labelQuantity.setAttribute("for", "quantity");
   labelQuantity.textContent = "Quantité";
   quantityIngredient.type = 'number';
-  quantityIngredient.name = 'quantity'+'_'+ clickCount;
+  quantityIngredient.name = 'quantity' + '_' + clickCount;
 
 
   const labelUnity = document.createElement('label')
@@ -38,7 +33,7 @@ span.addEventListener("click", function () {
   optionBase.setAttribute('value', '');
   optionBase.textContent = "Choix de l'unité";
   selectUnity.appendChild(optionBase);
-  selectUnity.setAttribute('name', 'unity'+'_'+ clickCount);
+  selectUnity.setAttribute('name', 'unity' + '_' + clickCount);
   selectUnity.setAttribute('id', 'unity');
   const optionNull = document.createElement('option');
   optionNull.setAttribute('value', '');
@@ -71,7 +66,7 @@ span.addEventListener("click", function () {
 
 
 
-  div.appendChild(idRecipe);
+
   div.appendChild(labelName);
   div.appendChild(nameIngredient);
   div.appendChild(labelQuantity);
@@ -97,10 +92,13 @@ formAddRecipe.addEventListener('submit', function (e) {
     body: data
   })
     .then((response) => response.json())
-    .then(datas => {
-      const lastInsertId = datas.datasNewRecipe;
-      console.log(datas);
-      recipeIdInput.value = lastInsertId;
+    .then((datas) => {
+      const lastInsertId = datas;
+      const idRecipe = document.createElement('input');
+      idRecipe.type = 'hidden';
+      idRecipe.name = 'recipe_id';
+      idRecipe.value = lastInsertId;
+      formIngredient.append(idRecipe)
     })
     .catch(error => {
       console.log(error);
